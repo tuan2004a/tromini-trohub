@@ -73,7 +73,7 @@ export class UserRepository {
 			$set["sessions.$.expires_at"] = updates.expires_at;
 		}
 		if (Object.keys($set).length === 0) return;
-		await User.updateOne({ _id: userId, "sessions.session_id": sessionId });
+		await User.updateOne({ _id: userId, "sessions.session_id": sessionId }, { $set });	
 	}
 
 	async removeUserSession(userId: string, sessionId: string): Promise<void | null | undefined> {

@@ -96,7 +96,7 @@ export class AuthService {
 				throw new ApiError(401, "Hash token không khớp hoặc đã bị thay đổi");
 			}
 
-			if (session.created_at <= new Date()) {
+			if (session.expires_at <= new Date()) {
 				await this.userService.removeUserSession(user._id.toString(), session.session_id);
 				throw new ApiError(401, "Token hết hạn");
 			}
