@@ -23,13 +23,9 @@ export interface UserSearchFilters {
 	search?: string;
 }
 
-export interface PaginationResult<T> {
-	data: T[];
-	pagination: {
-		currentPage: number;
-		totalPages: number;
-		totalItems: number;
-		hasNext: boolean;
-		hasPrev: boolean;
-	};
+export interface GetUsersParams {
+	page: number;
+	limit: number;
+	search?: string;
+	filters?: any;
 }

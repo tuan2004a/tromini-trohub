@@ -10,30 +10,14 @@ export class UserController {
 
 	getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 		try {
-			/*
-			const page = parseInt(req.query.page as string) || 1;
-			const limit = parseInt(req.query.limit as string) || 10;
-			const search = req.query.search as string;
-			const role = req.query.role as string;
-
-			const filters: any = {};
-			if (role) filters.role = role;
-
-			const result = await this.userService.getAllUsers({
-				page,
-				limit,
-				search,
-				filters,
-			});
-			*/
 
 			const { page = "1", limit = "10", search, filters } = req.query;
 
 			const result = await this.userService.getAllUsers({
-				page: +page,
-				limit: +limit,
-				search: search as string,
-				filters: filters as string,
+				page: parseInt(page as string, 10),
+				limit: parseInt(limit as string, 10),
+				search: search as string | undefined,
+				filters: filters ? JSON.parse(filters as string) : undefined,
 			});
 
 			res.status(200).json({

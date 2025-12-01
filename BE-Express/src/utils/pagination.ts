@@ -1,23 +1,3 @@
-export interface PaginationMeta {
-	currentPage: number;
-	totalPages: number;
-	totalItems: number;
-	perPage: number;
-	hasNext: boolean;
-	hasPrev: boolean;
-}
+import { PaginateResult } from "mongoose";
 
-export interface PaginationResult<T> {
-	data: T[];
-	pagination: PaginationMeta;
-}
-
-export interface PaginationOptions {
-	page?: number;
-	limit?: number;
-}
-
-
-export class pagination{
-    
-}
+export type PaginationResult<T> = PaginateResult<T>;

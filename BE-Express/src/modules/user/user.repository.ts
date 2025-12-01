@@ -1,29 +1,24 @@
 import mongoose from "mongoose";
 import { User, UserModel, IUserSession } from "./user.model";
-import { UserSearchFilters, PaginationResult, UserType } from "./user.type";
+import { UserSearchFilters, UserType } from "./user.type";
 import { UserDto } from "./user.dto";
+import { PaginationResult } from "@/utils/pagination";
 
 export class UserRepository {
 	constructor() {}
 
 	async getAllUsersRepo(page: number = 1, limit: number = 10, filters: UserSearchFilters = {}): Promise<PaginationResult<UserModel>> {
 		const query = this.buildSearchQuery(filters);
-		const skip = (page - 1) * limit;
 
-		const [users, totalItems] = await Promise.all([User.find(query).skip(skip).limit(limit).sort({ createdAt: -1 }), User.countDocuments(query)]);
-
-		const totalPages = Math.ceil(totalItems / limit);
-
-		return {
-			data: users,
-			pagination: {
-				currentPage: page,
-				totalPages: totalPages,
-				totalItems: totalItems,
-				hasNext: page < totalPages,
-				hasPrev: page > 1,
-			},
+		const pagination = {
+			page,
+			limit,
+			sort: { createdAt: -1 },
 		};
+
+		const result: any = await User.paginate(query, pagination);
+
+		return result;
 	}
 
 	async findUserByPhone(phone: string): Promise<UserModel | null> {
@@ -73,7 +68,7 @@ export class UserRepository {
 			$set["sessions.$.expires_at"] = updates.expires_at;
 		}
 		if (Object.keys($set).length === 0) return;
-		await User.updateOne({ _id: userId, "sessions.session_id": sessionId }, { $set });	
+		await User.updateOne({ _id: userId, "sessions.session_id": sessionId }, { $set });
 	}
 
 	async removeUserSession(userId: string, sessionId: string): Promise<void | null | undefined> {

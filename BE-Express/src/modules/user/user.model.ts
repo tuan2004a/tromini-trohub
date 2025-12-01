@@ -1,6 +1,6 @@
-import mongoose, { Document, Schema } from "mongoose";
-import bcrypt from "bcryptjs";
+import mongoose, { Document, Model, Schema } from "mongoose";
 import { UserRole, UserType } from "./user.type";
+import mongoosePaginate from "mongoose-paginate-v2";
 
 export interface UserModel extends Document {
 	_id: string;
@@ -19,6 +19,10 @@ export interface IUserSession {
 	readonly expires_at: Date;
 	readonly created_at: Date;
 }
+
+// export interface UserModelPaginate<T> extends Model<T> {
+// 	paginate: (query: any, options: any) => Promise<any>;
+// }
 
 
 const userSchema = new Schema(
@@ -67,4 +71,6 @@ const userSchema = new Schema(
 	{ timestamps: true }
 );
 
-export const User = mongoose.model<UserModel>("User", userSchema);
+
+userSchema.plugin(mongoosePaginate);
+export const User = mongoose.model<UserModel, mongoose.PaginateModel<UserModel>>("User", userSchema);

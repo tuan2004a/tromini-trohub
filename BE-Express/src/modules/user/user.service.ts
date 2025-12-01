@@ -1,10 +1,9 @@
-import jwt from "jsonwebtoken";
-import mongoose from "mongoose";
 import { IUserSession, User, UserModel } from "./user.model";
 import { UserRepository } from "./user.repository";
-import { PaginationResult, UserType } from "./user.type";
-import { UserDto } from "./user.dto";
+import { UserType, GetUsersParams } from "./user.type";
+import { UserDto, PaginatedUserDto } from "./user.dto";
 import { sendSuccess, sendError } from "../../utils/response";
+
 
 
 export class UserService {
@@ -16,19 +15,18 @@ export class UserService {
 
 	/* ----- CRUD User ----- */
 
-	async getAllUsers(options: { page: number; limit: number; search?: string; filters?: any }): Promise<PaginationResult<UserDto>> {
-		try {
-			const { page = 1, limit = 10, search, filters } = options;
-			const result = await this.userRepository.getAllUsersRepo(page, limit, { search, ...filters });
-
-			return {
-				data: result.data.map((user) => this.mapToResponseDto(user)),
-				pagination: result.pagination,
-			};
-		} catch (error) {
-			console.log("Error getting all users:", error);
-			throw error;
-		}
+	async getAllUsers(params: GetUsersParams): Promise<PaginatedUserDto> {
+		const { page, limit, search, filters } = params;
+		const result = await this.userRepository.getAllUsersRepo(page, limit, { search, ...filters });
+		return {
+			...result,
+			docs: result.docs.map((u) => ({
+				id: u._id.toString(),
+				phone: u.phone,
+				displayName: u.displayName,
+				role: u.role,
+			})),
+		};
 	}
 
 	async createUser(userData: UserType): Promise<UserModel | undefined | null> {
@@ -77,13 +75,11 @@ export class UserService {
 
 	// ✅ Private method
 	private mapToResponseDto(user: UserModel): UserDto {
-		// const configs = user.configs || this.getDefaultUserConfig(user._id.toString());
-
 		return {
 			id: user._id.toString(),
 			phone: user.phone,
 			displayName: user.displayName,
-			hashedPassword: user.hashedPassword,
+			// hashedPassword: user.hashedPassword,
 			role: user.role,
 		};
 	}
