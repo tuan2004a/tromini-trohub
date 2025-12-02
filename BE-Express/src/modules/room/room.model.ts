@@ -2,11 +2,11 @@ import mongoose, { Document, Model, Schema } from "mongoose";
 import { RoomStatus } from "./room.type";
 import mongoosePaginate from "mongoose-paginate-v2";
 
-export interface roomModel extends Document {
+export interface RoomModel extends Document {
 	_id: string;
 	name: string;
 	type: string;
-	status: string;
+	status: RoomStatus;
 	price: number;
 	area: number;
 	images: string[];
@@ -75,4 +75,4 @@ const roomShema = new Schema(
 );
 
 roomShema.plugin(mongoosePaginate);
-export const Room = mongoose.model<roomModel, mongoose.PaginateModel<roomModel>>("Room", roomShema);
+export const Room = mongoose.model<RoomModel, mongoose.PaginateModel<RoomModel>>("Room", roomShema);

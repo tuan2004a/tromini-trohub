@@ -2,9 +2,6 @@ import { IUserSession, User, UserModel } from "./user.model";
 import { UserRepository } from "./user.repository";
 import { UserType, GetUsersParams } from "./user.type";
 import { UserDto, PaginatedUserDto } from "./user.dto";
-import { sendSuccess, sendError } from "../../utils/response";
-
-
 
 export class UserService {
 	private readonly userRepository: UserRepository;
@@ -73,7 +70,7 @@ export class UserService {
 		return await this.userRepository.removeUserSession(userId, sessionId);
 	}
 
-	// ✅ Private method
+	// 🛡️ Private method
 	private mapToResponseDto(user: UserModel): UserDto {
 		return {
 			id: user._id.toString(),

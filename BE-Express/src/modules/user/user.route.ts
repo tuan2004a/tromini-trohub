@@ -7,6 +7,10 @@ import { authMiddleware } from "@/middleware/authMiddleware";
 const router: any = Router();
 const userController = new UserController();
 
-router.get("/getalluser", authMiddleware, userController.getAllUsers.bind(userController));
+//🌐 public routes
+
+//🛡️ private routes
+router.use(authMiddleware); 
+router.get("/getalluser", userController.getAllUsers.bind(userController));
 
 export default router;

@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import {UserService} from "../user/user.service";
 import { RegisterRequest, AuthResponse, LoginRequest, RefreshTokenResponse } from "./auth.type";
-import { logError, logWarn, logInfo } from "@/utils/logger";
+import { logError } from "@/utils/logger";
 import { ApiError } from "@/utils/ApiError";
 
 
@@ -26,12 +26,12 @@ export class AuthService {
 			const { phone, password, displayName } = registerData;
 
 			if (!phone || !password || !displayName) {
-				throw new Error("Thiếu thông tin đăng ký");
+				throw ApiError.badRequest("Thiếu thông tin đăng ký");
 			}
 
 			const duplicate = await this.userService.findUserByPhone(phone);
 			if (duplicate) {
-				throw new Error("Số điện thoại đã được sử dụng");
+				throw ApiError.badRequest("Số điện thoại đã được sử dụng");
 			}
 
 			const hashedPassword = await bcrypt.hash(password, 10); // salt = 10
@@ -43,15 +43,15 @@ export class AuthService {
 			});
 
 			if (!user) {
-				throw new ApiError(201, "Tạo người dùng thất bại");
+				throw ApiError.internal(" Tạo người dùng thất bại");
 			}
 
 			const refreshToken = await this.createSessionRefreshToken(user);
 
 			return this.formatAuthResponse(user, refreshToken);
 		} catch (error) {
-			console.log("Registration failed:", error);
-			throw error;
+			logError("Registration failed:", error);
+			throw ApiError.internal("Đăng ký thất bại", error);
 		}
 	}
 
@@ -59,13 +59,13 @@ export class AuthService {
 		try {
 			const User = await this.userService.findUserByPhone(loginData.phone);
 			if (!User) {
-				throw new ApiError(401, "Không tìm thấy SĐT");
+				throw ApiError.badRequest("Không tìm thấy SĐT");
 			}
 
 			const verifyPassword = await bcrypt.compare(loginData.password, User.hashedPassword);
 
 			if (!verifyPassword) {
-				throw new ApiError(401, "username hoặc password không chính xác");
+				throw ApiError.badRequest("username hoặc password không chính xác");
 			}
 
 			const refreshToken = await this.createSessionRefreshToken(User);
@@ -73,7 +73,7 @@ export class AuthService {
 			return this.formatAuthResponse(User, refreshToken);
 		} catch (error) {
 			logError("Đăng nhập thất bại", error);
-			throw new ApiError(401, "Lỗi đăng nhập");
+			throw ApiError.internal("Lỗi đăng nhập", error);
 		}
 	}
 
@@ -84,27 +84,27 @@ export class AuthService {
 			const user = await this.userService.findUserBySessionId(sessionId);
 
 			if (!user) {
-				throw new ApiError(401, "không tìm thấy User");
+				throw ApiError.badRequest("không tìm thấy User");
 			}
 
 			const session = this.findSession(user.sessions, sessionId);
 			if (!session) {
-				throw new ApiError(401, "Không tìm thấy session tương ứng trong user");
+				throw ApiError.badRequest("Không tìm thấy session tương ứng trong user");
 			}
 
 			if (session.hashed_refresh_token !== incomingHash) {
-				throw new ApiError(401, "Hash token không khớp hoặc đã bị thay đổi");
+				throw ApiError.badRequest("Hash token không khớp hoặc đã bị thay đổi");
 			}
 
 			if (session.expires_at <= new Date()) {
 				await this.userService.removeUserSession(user._id.toString(), session.session_id);
-				throw new ApiError(401, "Token hết hạn");
+				throw ApiError.badRequest("Token hết hạn");
 			}
 
 			return this.rotateSessionTokensWithExpiry(user as TokenizableUser, session.session_id);
 		} catch (error) {
 			logError("Refresh token failed:", error);
-			throw new ApiError(401, "Lỗi Refresh token");
+			throw ApiError.internal("Lỗi Refresh token");
 		}
 	}
 

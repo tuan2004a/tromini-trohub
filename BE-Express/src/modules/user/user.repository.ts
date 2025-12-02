@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
 import { User, UserModel, IUserSession } from "./user.model";
 import { UserSearchFilters, UserType } from "./user.type";
-import { UserDto } from "./user.dto";
 import { PaginationResult } from "@/utils/pagination";
 
 export class UserRepository {
 	constructor() {}
+
+	/* ----- CRUD ----- */
 
 	async getAllUsersRepo(page: number = 1, limit: number = 10, filters: UserSearchFilters = {}): Promise<PaginationResult<UserModel>> {
 		const query = this.buildSearchQuery(filters);
@@ -21,13 +22,15 @@ export class UserRepository {
 		return result;
 	}
 
-	async findUserByPhone(phone: string): Promise<UserModel | null> {
-		return User.findOne({ phone });
-	}
-
 	async createUser(userDataRepo: UserType): Promise<UserModel | undefined> {
 		const user = new User(userDataRepo);
 		return await user.save();
+	}
+
+	/* ----- Get Find ----- */
+
+	async findUserByPhone(phone: string): Promise<UserModel | null> {
+		return User.findOne({ phone });
 	}
 
 	async findUserById(id: string): Promise<UserModel | null> {
@@ -80,7 +83,7 @@ export class UserRepository {
 		);
 	}
 
-	// ✅ Private method
+	// 🛡️ Private method
 	private buildSearchQuery(filters: UserSearchFilters): any {
 		const query: any = { isActive: true };
 

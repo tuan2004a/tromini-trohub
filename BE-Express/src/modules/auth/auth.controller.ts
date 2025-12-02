@@ -21,8 +21,9 @@ export class AuthController {
 
 			return sendSuccess(res.status(201), result, "Đăng ký thành công");
 		} catch (error) {
-			console.log("lỗi đăng ký: ", error);
-			throw error;
+			logError("lỗi đăng ký: ", error);
+			throw ApiError.badRequest("Lỗi đăng ký");
+
 		}
 	};
 
