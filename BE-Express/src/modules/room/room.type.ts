@@ -5,3 +5,23 @@ export enum RoomStatus {
     OTHER = "khác",
 }
 
+export interface GetUsersParams {
+	page: number;
+	limit: number;
+	search?: string;
+	filters?: any;
+}
+
+export interface RoomType {
+	_id: string;
+	type: string;
+	name: string;
+	status?: RoomStatus;
+	price: number;
+	tag?: string[];
+	areaSize?: number;
+	images?: string[];
+	description: string;
+}
+
+export type CreateRoom = Omit<RoomType, "_id">;

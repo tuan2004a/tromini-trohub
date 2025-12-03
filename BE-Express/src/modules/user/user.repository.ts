@@ -17,7 +17,7 @@ export class UserRepository {
 			sort: { createdAt: -1 },
 		};
 
-		const result: any = await User.paginate(query, pagination);
+		const result = await User.paginate(query, pagination);
 
 		return result;
 	}

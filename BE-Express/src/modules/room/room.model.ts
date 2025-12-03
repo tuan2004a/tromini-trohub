@@ -4,18 +4,14 @@ import mongoosePaginate from "mongoose-paginate-v2";
 
 export interface RoomModel extends Document {
 	_id: string;
-	name: string;
 	type: string;
-	status: RoomStatus;
+	name: string;
+	status?: RoomStatus;
 	price: number;
-	area: number;
-	images: string[];
+	tag?: string[];
+	areaSize?: number;
+	images?: string[];
 	description: string;
-	representativeId: string;
-	members: string[];
-	contractId: string | null;
-	createdAt: Date;
-	updatedAt: Date;
 }
 
 const roomShema = new Schema(
@@ -43,7 +39,13 @@ const roomShema = new Schema(
 			trim: true,
 			required: [true, "Giá phòng không được để trống"],
 		},
-		area: {
+		tag: [
+			{
+				type: String,
+				default: [],
+			},
+		],
+		areaSize: {
 			type: Number,
 		},
 		images: {
@@ -51,24 +53,6 @@ const roomShema = new Schema(
 		},
 		description: {
 			type: String,
-		},
-        //Người đại diện phòng thuê
-		representativeId: {
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "User",
-		},
-		//Thành viên trong phòng
-		members: [
-			{
-				type: mongoose.Schema.Types.ObjectId,
-				ref: "User",
-			},
-		],
-		// Hợp đồng
-		contractId: {
-			type: mongoose.Schema.Types.ObjectId,
-			ref: "Contract",
-			default: null,
 		},
 	},
 	{ timestamps: true }

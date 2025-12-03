@@ -24,7 +24,6 @@ export interface IUserSession {
 // 	paginate: (query: any, options: any) => Promise<any>;
 // }
 
-
 const userSchema = new Schema(
 	{
 		phone: {
@@ -55,6 +54,16 @@ const userSchema = new Schema(
 			default: UserRole.USER,
 			index: true,
 		},
+		roomId: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Room",
+		},
+		// Hợp đồng
+		contractId: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: "Contract",
+			default: null,
+		},
 		sessions: {
 			type: [
 				{
@@ -70,7 +79,6 @@ const userSchema = new Schema(
 	},
 	{ timestamps: true }
 );
-
 
 userSchema.plugin(mongoosePaginate);
 export const User = mongoose.model<UserModel, mongoose.PaginateModel<UserModel>>("User", userSchema);
