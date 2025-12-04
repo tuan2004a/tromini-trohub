@@ -1,7 +1,7 @@
 import { ApiError } from "@/utils/ApiError";
 import { RoomRepository } from "./room.repository";
 import { logError } from "@/utils/logger";
-import { RoomDto, PaginatedRoomDto, CreateRequest } from "./room.dto";
+import { RoomDto, PaginatedRoomDto, CreateRequest, UpdateRequest } from "./room.dto";
 import { Room, RoomModel } from "./room.model";
 import { GetUsersParams, RoomResponse } from "./room.type";
 
@@ -39,6 +39,20 @@ export class RoomService {
 		} catch (error) {
 			logError("Service-Create:", error);
 			throw ApiError.internal("Lỗi tạo phòng");
+		}
+	}
+
+	async updateRoom(id: string, UpdateData: UpdateRequest): Promise<RoomModel | null> {
+		try {
+			const room = await this.roomRepository.updatedRoom(id, UpdateData);
+			if(!room){
+				throw ApiError.notFound("Không tìm thấy phòng");
+			}
+
+			return room;
+		} catch (error) {
+			logError("Service-Update:", error);
+			throw ApiError.internal("Lỗi cập nhập phòng");
 		}
 	}
 

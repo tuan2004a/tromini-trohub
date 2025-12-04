@@ -3,7 +3,7 @@ import { RoomService } from "./room.service";
 import { ApiError } from "@/utils/ApiError";
 import { Request, Response, NextFunction } from "express";
 import { sendSuccess } from "@/utils/response";
-import { CreateDto, CreateRequest } from "./room.dto";
+import { CreateRequest, UpdateRequest } from "./room.dto";
 
 export class RoomController {
 	private readonly roomService: RoomService;
@@ -39,6 +39,19 @@ export class RoomController {
 		} catch (error) {
 			logError("Lỗi tạo phòng: ", error);
 			next(ApiError.badRequest("Lỗi tạo phòng"));
+		}
+	};
+
+	UpdateRoom = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+		try {
+			const { id } = req.params;
+			const UpdateRoomData: UpdateRequest = req.body;
+			const result = await this.roomService.updateRoom(id, UpdateRoomData);
+
+			return sendSuccess(res, result, "Cập nhập phòng thành công");
+		} catch (error) {
+			logError("Lỗi cập nhập: ", error);
+			next(ApiError.badRequest("Lỗi cập nhập"));
 		}
 	};
 }

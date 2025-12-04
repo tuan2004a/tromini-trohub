@@ -35,4 +35,15 @@ export interface CreateRoom {
 	description?: string;
 }
 
+export interface UpdateRoom {
+	type?: string;
+	name?: string;
+	status?: RoomStatus;
+	price?: number;
+	tag?: string[];
+	areaSize?: number;
+	images?: string[];
+	description?: string;
+}
+
 export type RoomResponse = RoomType;

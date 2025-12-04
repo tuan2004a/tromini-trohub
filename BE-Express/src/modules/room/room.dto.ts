@@ -12,8 +12,6 @@ export interface RoomDto {
 	description: string;
 }
 
-export type CreateDto = RoomDto;
-
 export interface PaginatedRoomDto {
 	docs: RoomDto[];
 	totalDocs: number;
@@ -27,6 +25,17 @@ export interface PaginatedRoomDto {
 }
 
 export interface CreateRequest {
+	type?: string;
+	name?: string;
+	status?: RoomStatus;
+	price?: number;
+	tag?: string[];
+	areaSize?: number;
+	images?: string[];
+	description?: string;
+}
+
+export interface UpdateRequest {
 	type?: string;
 	name?: string;
 	status?: RoomStatus;

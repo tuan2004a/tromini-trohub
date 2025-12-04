@@ -1,6 +1,7 @@
 import { PaginationResult } from "@/utils/pagination";
-import { Room, RoomModel } from './room.model';
-import { RoomType, CreateRoom } from "./room.type";
+import { Room, RoomModel } from "./room.model";
+import { RoomType, CreateRoom, UpdateRoom } from "./room.type";
+import mongoose from "mongoose";
 
 export class RoomRepository {
 	constructor() {}
@@ -25,6 +26,15 @@ export class RoomRepository {
 		return new Room(CreateData).save();
 	}
 
-	/* ----- Get Find ----- */
-}
+	async updatedRoom(id: string, UpdateData: UpdateRoom): Promise<RoomModel | null> {
+		if (!this.isValidObjectId(id)) return null;
+		return Room.findByIdAndUpdate(id, { $set: UpdateData }, { new: true, runValidators: true });
+	}
 
+	/* ----- Get Find ----- */
+
+	// 🛡️ Private method
+	private isValidObjectId(id: string): boolean {
+		return mongoose.Types.ObjectId.isValid(id);
+	}
+}
