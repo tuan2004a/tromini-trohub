@@ -13,5 +13,6 @@ router.use(authMiddleware);
 router.get("/getAllRooms", roomController.GetAllRooms.bind(roomController));
 router.post("/create-room", roomController.CreateRoom.bind(roomController));
 router.put("/update-room/:id", roomController.UpdateRoom.bind(roomController));
+router.delete("/delete-room/:id", roomController.DeleteRoom.bind(roomController));
 
 export default router;

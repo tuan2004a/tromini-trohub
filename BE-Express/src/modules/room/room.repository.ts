@@ -31,6 +31,11 @@ export class RoomRepository {
 		return Room.findByIdAndUpdate(id, { $set: UpdateData }, { new: true, runValidators: true });
 	}
 
+	async deletedRoom(id: string): Promise<RoomModel | null> {
+		if (!this.isValidObjectId(id)) return null;
+		return Room.findByIdAndDelete(id);
+	}
+
 	/* ----- Get Find ----- */
 
 	// 🛡️ Private method

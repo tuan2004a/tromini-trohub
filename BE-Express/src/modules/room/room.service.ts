@@ -56,6 +56,20 @@ export class RoomService {
 		}
 	}
 
+	async deletedRoom(id: string): Promise<RoomModel | null>{
+		try {
+			const room = await this.roomRepository.deletedRoom(id);
+			if (!room) {
+				throw ApiError.notFound("Không tìm thấy phòng");
+			}
+
+			return room;
+		} catch (error) {
+			logError("Service-Delete:", error);
+			throw ApiError.internal("Lỗi xóa phòng");
+		}
+	}
+
 	/* ----- Get Find ----- */
 
 	//🛡️ Private method

@@ -54,4 +54,16 @@ export class RoomController {
 			next(ApiError.badRequest("Lỗi cập nhập"));
 		}
 	};
+
+	DeleteRoom = async (req: Request, res: Response, next: NextFunction) => {
+		try {
+			const { id } = req.params;
+			const result = await this.roomService.deletedRoom(id);
+
+			return sendSuccess(res, result, "Xoá phòng thành công");
+		} catch (error) {
+			logError("Lỗi xóa phòng: ", error);
+			next(ApiError.badRequest("Lỗi xóa phòng"));
+		}
+	};
 }
