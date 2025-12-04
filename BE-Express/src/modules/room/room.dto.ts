@@ -12,8 +12,7 @@ export interface RoomDto {
 	description: string;
 }
 
-export type CreateDto = Omit<RoomDto, "_id">;
-// export type CreateDto = Omit<CreateRoom, "_id">;
+export type CreateDto = RoomDto;
 
 export interface PaginatedRoomDto {
 	docs: RoomDto[];
@@ -26,3 +25,16 @@ export interface PaginatedRoomDto {
 	prevPage?: number | null;
 	nextPage?: number | null;
 }
+
+export interface CreateRequest {
+	type?: string;
+	name?: string;
+	status?: RoomStatus;
+	price?: number;
+	tag?: string[];
+	areaSize?: number;
+	images?: string[];
+	description?: string;
+}
+
+export interface RoomRespone extends RoomDto {}

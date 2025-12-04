@@ -24,4 +24,15 @@ export interface RoomType {
 	description: string;
 }
 
-export type CreateRoom = Omit<RoomType, "_id">;
+export interface CreateRoom {
+	type?: string;
+	name?: string;
+	status?: RoomStatus;
+	price?: number;
+	tag?: string[];
+	areaSize?: number;
+	images?: string[];
+	description?: string;
+}
+
+export type RoomResponse = RoomType;

@@ -1,7 +1,6 @@
-import mongoose from "mongoose";
 import { PaginationResult } from "@/utils/pagination";
 import { Room, RoomModel } from './room.model';
-import { CreateRoom } from "./room.type";
+import { RoomType, CreateRoom } from "./room.type";
 
 export class RoomRepository {
 	constructor() {}

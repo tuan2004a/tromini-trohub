@@ -1,9 +1,9 @@
 import { ApiError } from "@/utils/ApiError";
 import { RoomRepository } from "./room.repository";
 import { logError } from "@/utils/logger";
-import { CreateDto, PaginatedRoomDto } from "./room.dto";
+import { RoomDto, PaginatedRoomDto, CreateRequest } from "./room.dto";
 import { Room, RoomModel } from "./room.model";
-import { GetUsersParams } from "./room.type";
+import { GetUsersParams, RoomResponse } from "./room.type";
 
 export class RoomService {
 	private readonly roomRepository: RoomRepository;
@@ -33,7 +33,7 @@ export class RoomService {
 		};
 	}
 
-	async createRoom(CreateData: CreateDto): Promise<RoomModel> {
+	async createRoom(CreateData: CreateRequest): Promise<RoomModel> {
 		try {
 			return await this.roomRepository.createRoom(CreateData);
 		} catch (error) {
@@ -45,4 +45,17 @@ export class RoomService {
 	/* ----- Get Find ----- */
 
 	//🛡️ Private method
+	private formatRoomResponse(room: RoomModel): RoomResponse {
+		return {
+			_id: room._id.toString(),
+			type: room.type,
+			name: room.name,
+			price: room.price,
+			description: room.description,
+			status: room.status,
+			tag: room.tag,
+			areaSize: room.areaSize,
+			images: room.images,
+		};
+	}
 }
