@@ -1,5 +1,5 @@
 export interface UserDto {
-	id: string;
+	_id: string;
 	phone: string;
 	displayName: string;
 	role?: "user" | "admin" | "super_admin";

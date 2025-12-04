@@ -18,7 +18,7 @@ export class UserService {
 		return {
 			...result,
 			docs: result.docs.map((u) => ({
-				id: u._id.toString(),
+				_id: u._id.toString(),
 				phone: u.phone,
 				displayName: u.displayName,
 				role: u.role,
@@ -73,10 +73,9 @@ export class UserService {
 	// 🛡️ Private method
 	private mapToResponseDto(user: UserModel): UserDto {
 		return {
-			id: user._id.toString(),
+			_id: user._id.toString(),
 			phone: user.phone,
 			displayName: user.displayName,
-			// hashedPassword: user.hashedPassword,
 			role: user.role,
 		};
 	}

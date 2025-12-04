@@ -33,30 +33,32 @@ export class RoomService {
 		};
 	}
 
-	async createRoom(CreateData: CreateRequest): Promise<RoomModel> {
+	async createRoom(CreateData: CreateRequest): Promise<RoomResponse> {
 		try {
-			return await this.roomRepository.createRoom(CreateData);
+			const room = await this.roomRepository.createRoom(CreateData);
+
+			return this.formatRoomResponse(room);
 		} catch (error) {
 			logError("Service-Create:", error);
 			throw ApiError.internal("Lỗi tạo phòng");
 		}
 	}
 
-	async updateRoom(id: string, UpdateData: UpdateRequest): Promise<RoomModel | null> {
+	async updateRoom(id: string, UpdateData: UpdateRequest): Promise<RoomResponse> {
 		try {
 			const room = await this.roomRepository.updatedRoom(id, UpdateData);
-			if(!room){
+			if (!room) {
 				throw ApiError.notFound("Không tìm thấy phòng");
 			}
 
-			return room;
+			return this.formatRoomResponse(room);
 		} catch (error) {
 			logError("Service-Update:", error);
 			throw ApiError.internal("Lỗi cập nhập phòng");
 		}
 	}
 
-	async deletedRoom(id: string): Promise<RoomModel | null>{
+	async deletedRoom(id: string): Promise<RoomModel | null> {
 		try {
 			const room = await this.roomRepository.deletedRoom(id);
 			if (!room) {

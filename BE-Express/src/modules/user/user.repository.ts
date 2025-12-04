@@ -34,8 +34,8 @@ export class UserRepository {
 	}
 
 	async findUserById(id: string): Promise<UserModel | null> {
-		return await User.findById({ id });
-	}
+	return await User.findById(id);
+}
 
 	/* ----- Session User ----- */
 
