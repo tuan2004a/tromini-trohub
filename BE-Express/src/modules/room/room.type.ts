@@ -47,3 +47,9 @@ export interface UpdateRoom {
 }
 
 export type RoomResponse = RoomType;
+
+export interface SearchFilters {
+	name?: string;
+	status?: RoomStatus;
+	tag?: string[];
+}

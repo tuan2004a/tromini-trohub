@@ -74,6 +74,20 @@ export class RoomService {
 
 	/* ----- Get Find ----- */
 
+	async findroomById(id: string): Promise<RoomResponse> {
+		try {
+			const room = await this.roomRepository.findroomById(id);
+			if (!room) {
+				throw ApiError.notFound("Không tìm thấy phòng");
+			}
+
+			return this.formatRoomResponse(room);
+		} catch (error) {
+			logError("Service-FindById:", error);
+			throw ApiError.internal("Lỗi tìm phòng theo Id");
+		}	
+	}
+
 	//🛡️ Private method
 	private formatRoomResponse(room: RoomModel): RoomResponse {
 		return {

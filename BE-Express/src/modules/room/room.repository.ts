@@ -1,6 +1,6 @@
 import { PaginationResult } from "@/utils/pagination";
 import { Room, RoomModel } from "./room.model";
-import { RoomType, CreateRoom, UpdateRoom } from "./room.type";
+import { RoomType, CreateRoom, UpdateRoom, SearchFilters } from "./room.type";
 import mongoose from "mongoose";
 
 export class RoomRepository {
@@ -38,8 +38,35 @@ export class RoomRepository {
 
 	/* ----- Get Find ----- */
 
+	async findroomById(id: string): Promise<RoomModel | null> {
+		if (!this.isValidObjectId(id)) return null;
+		return Room.findById(id);
+	}
+
+	/* ----- Other ----- */
+
+	// async filterRooms(): Promise<RoomModel | null> {
+	// 	return
+	// }
+
 	// 🛡️ Private method
 	private isValidObjectId(id: string): boolean {
 		return mongoose.Types.ObjectId.isValid(id);
+	}
+
+	private buildSearchQuery( filters:SearchFilters): Record<string, any> {
+		const query: Record<string, any> = {};
+
+		if (filters.name !== undefined ) {
+			query.name = { $regex: filters.name, $options: "i" };
+		}
+
+		if(filters.status !== undefined){
+			query.status = filters.status;
+		}
+
+		
+
+		return query;
 	}
 }

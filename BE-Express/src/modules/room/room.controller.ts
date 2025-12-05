@@ -12,6 +12,8 @@ export class RoomController {
 		this.roomService = new RoomService();
 	}
 
+	/* ----- CRUD User ----- */
+
 	GetAllRooms = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 		try {
 			const { page = "1", limit = "10", search, filters } = req.query;
@@ -66,4 +68,17 @@ export class RoomController {
 			next(ApiError.badRequest("Lỗi xóa phòng"));
 		}
 	};
+
+	/* ----- Get Find ----- */
+	FindRoomById = async (req: Request, res: Response, next: NextFunction) => {
+		try {
+			const { id } = req.params;
+			const result = await this.roomService.findroomById(id);
+
+			return sendSuccess(res, result, "Lấy danh sách phòng thành công");
+		} catch (error) {
+			logError("Lỗi tìm phòng theo Id: ", error);
+			next(ApiError.badRequest("Lỗi tìm phòng theo Id"));
+		}
+	}
 }
