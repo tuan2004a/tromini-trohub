@@ -80,5 +80,20 @@ export class RoomController {
 			logError("Lỗi tìm phòng theo Id: ", error);
 			next(ApiError.badRequest("Lỗi tìm phòng theo Id"));
 		}
-	}
+	};
+
+	/* ----- Other ----- */
+
+	UpdateStatus = async (req: Request, res: Response, next: NextFunction) => {
+		try {
+			const { id } = req.params;
+			const { status } = req.body;
+			const result = await this.roomService.updateStatus(id, status);
+
+			return sendSuccess(res, result, "Cập nhập trạng thái phòng thành công");
+		} catch (error) {
+			logError("Lỗi tìm phòng theo Id: ", error);
+			next(ApiError.badRequest("Lỗi tìm phòng theo Id"));
+		}
+	};
 }

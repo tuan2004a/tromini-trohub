@@ -85,7 +85,23 @@ export class RoomService {
 		} catch (error) {
 			logError("Service-FindById:", error);
 			throw ApiError.internal("Lỗi tìm phòng theo Id");
-		}	
+		}
+	}
+
+	/* ----- Other ----- */
+
+	async updateStatus(id: string, status: string): Promise<RoomResponse | null> {
+		try {
+			const room = await this.roomRepository.updateStatus(id, status);
+			if (!room) {
+				throw ApiError.notFound("Không tìm thấy phòng");
+			}
+			
+			return this.formatRoomResponse(room);
+		} catch (error) {
+			logError("Service-UpdateStatus:", error);
+			throw ApiError.internal("Lỗi update status");
+		}
 	}
 
 	//🛡️ Private method

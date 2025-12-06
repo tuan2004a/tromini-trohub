@@ -9,17 +9,11 @@ export class RoomRepository {
 	/*----- CRUD ----- */
 
 	async getAllRoomsRepo(page: number = 1, limit: number = 10, filters: SearchFilters): Promise<PaginationResult<RoomModel>> {
-		// làm seach query
-
 		const query = this.buildSearchQuery(filters);
 
-		const pagination = {
-			page,
-			limit,
-			sort: { createdAt: -1 },
-		};
+		const pagination = this.paginateRooms(page, limit);
 
-		const result: any = await Room.paginate(query, pagination);
+		const result = await Room.paginate(query, pagination);
 
 		return result;
 	}
@@ -47,9 +41,10 @@ export class RoomRepository {
 
 	/* ----- Other ----- */
 
-	// async filterRooms(): Promise<RoomModel | null> {
-	// 	return
-	// }
+	async updateStatus(id: string, status: string): Promise<RoomModel | null> {
+		if (!this.isValidObjectId(id)) return null;
+		return Room.findByIdAndUpdate(id, { status }, { new: true });
+	}
 
 	// 🛡️ Private method
 	private isValidObjectId(id: string): boolean {
@@ -72,5 +67,9 @@ export class RoomRepository {
 		}
 
 		return query;
+	}
+
+	private paginateRooms(page: number = 1, limit: number = 10): Promise<RoomModel | null> {
+		return Room.paginate({}, { page, limit, sort: { createdAt: -1 } });
 	}
 }

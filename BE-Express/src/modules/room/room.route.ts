@@ -17,4 +17,6 @@ router.delete("/delete-room/:id", roomController.DeleteRoom.bind(roomController)
 
 router.get("/find-room/:id", roomController.FindRoomById.bind(roomController));
 
+router.post("/update-status/:id", roomController.UpdateStatus.bind(roomController));
+
 export default router;
