@@ -16,7 +16,7 @@ export class RoomService {
 
 	async getAllRooms(params: GetUsersParams): Promise<PaginatedRoomDto> {
 		const { page, limit, search, filters } = params;
-		const result = await this.roomRepository.getAllRoomsRepo(page, limit);
+		const result = await this.roomRepository.getAllRoomsRepo(page, limit, filters);
 
 		return {
 			...result,

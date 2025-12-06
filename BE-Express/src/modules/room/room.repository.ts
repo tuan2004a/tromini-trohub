@@ -8,8 +8,10 @@ export class RoomRepository {
 
 	/*----- CRUD ----- */
 
-	async getAllRoomsRepo(page: number = 1, limit: number = 10): Promise<PaginationResult<RoomModel>> {
+	async getAllRoomsRepo(page: number = 1, limit: number = 10, filters: SearchFilters): Promise<PaginationResult<RoomModel>> {
 		// làm seach query
+
+		const query = this.buildSearchQuery(filters);
 
 		const pagination = {
 			page,
@@ -17,7 +19,7 @@ export class RoomRepository {
 			sort: { createdAt: -1 },
 		};
 
-		const result: any = await Room.paginate({}, pagination);
+		const result: any = await Room.paginate(query, pagination);
 
 		return result;
 	}
@@ -54,18 +56,20 @@ export class RoomRepository {
 		return mongoose.Types.ObjectId.isValid(id);
 	}
 
-	private buildSearchQuery( filters:SearchFilters): Record<string, any> {
+	private buildSearchQuery(filters: SearchFilters): Record<string, any> {
 		const query: Record<string, any> = {};
 
-		if (filters.name !== undefined ) {
-			query.name = { $regex: filters.name, $options: "i" };
+		if (filters.name && filters.name.trim() !== "") {
+			query.name = { $regex: filters.name.trim(), $options: "i" };
 		}
 
-		if(filters.status !== undefined){
+		if (filters.status) {
 			query.status = filters.status;
 		}
 
-		
+		if (filters.tag && Array.isArray(filters.tag) && filters.tag.length > 0) {
+			query.tags = { $in: filters.tag };
+		}
 
 		return query;
 	}
