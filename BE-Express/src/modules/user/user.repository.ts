@@ -69,6 +69,15 @@ export class UserRepository {
 		if (!this.isValidObjectId(userId)) return;
 		const $set: Record<string, unknown> = {};
 
+		const user = await User.findById(userId).select("+sessions");
+		if (!user || !Array.isArray(user.sessions)) return;
+
+		const session = (user.sessions as any[]).find((s) => s.session_id === sessionId);
+		if (!session) return;
+
+		if (updates.device_info) {
+			$set["sessions.$.device_info"] = updates.device_info;
+		}
 		if (updates.hashed_refresh_token) {
 			$set["sessions.$.hashed_refresh_token"] = updates.hashed_refresh_token;
 		}
@@ -76,6 +85,8 @@ export class UserRepository {
 			$set["sessions.$.expires_at"] = updates.expires_at;
 		}
 		if (Object.keys($set).length === 0) return;
+		
+		user.markModified("sessions");
 		await User.updateOne({ _id: userId, "sessions.session_id": sessionId }, { $set });
 	}
 

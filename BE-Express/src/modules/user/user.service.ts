@@ -80,7 +80,6 @@ export class UserService {
 	}
 
 	async updateUserSession(userId: string, sessionId: string, updates: Partial<IUserSession>): Promise<void | null | undefined> {
-		if (!this.isValidObjectId(userId)) return;
 		return this.userRepository.updateUserSession(userId, sessionId, updates);
 	}
 
