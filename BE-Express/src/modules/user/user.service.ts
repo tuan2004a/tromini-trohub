@@ -4,6 +4,7 @@ import { UserType, GetUsersParams } from "./user.type";
 import { UserDto, PaginatedUserDto, UpdateRequest } from "./user.dto";
 import { logError } from "@/utils/logger";
 import { ApiError } from "@/utils/ApiError";
+import mongoose from "mongoose";
 
 export class UserService {
 	private readonly userRepository: UserRepository;
@@ -79,6 +80,7 @@ export class UserService {
 	}
 
 	async updateUserSession(userId: string, sessionId: string, updates: Partial<IUserSession>): Promise<void | null | undefined> {
+		if (!this.isValidObjectId(userId)) return;
 		return this.userRepository.updateUserSession(userId, sessionId, updates);
 	}
 
@@ -94,5 +96,9 @@ export class UserService {
 			displayName: user.displayName,
 			role: user.role,
 		};
+	}
+
+	private isValidObjectId(id: string): boolean {
+		return mongoose.Types.ObjectId.isValid(id);
 	}
 }

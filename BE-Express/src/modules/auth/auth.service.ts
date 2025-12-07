@@ -21,7 +21,7 @@ export class AuthService {
 		this.userService = new UserService();
 	}
 
-	async signUp(registerData: RegisterRequest): Promise<AuthResponse | undefined> {
+	async signUp(registerData: RegisterRequest, deviceInfo: string = "unknown"): Promise<AuthResponse | undefined> {
 		try {
 			const { phone, password, displayName } = registerData;
 
@@ -46,7 +46,7 @@ export class AuthService {
 				throw ApiError.internal(" Tạo người dùng thất bại");
 			}
 
-			const refreshToken = await this.createSessionRefreshToken(user);
+			const refreshToken = await this.createSessionRefreshToken(user, deviceInfo);
 
 			return this.formatAuthResponse(user, refreshToken);
 		} catch (error) {
@@ -55,7 +55,7 @@ export class AuthService {
 		}
 	}
 
-	async lognIn(loginData: LoginRequest): Promise<AuthResponse | undefined> {
+	async lognIn(loginData: LoginRequest, deviceInfo: string = "unknown"): Promise<AuthResponse | undefined> {
 		try {
 			const User = await this.userService.findUserByPhone(loginData.phone);
 			if (!User) {
@@ -68,7 +68,7 @@ export class AuthService {
 				throw ApiError.badRequest("username hoặc password không chính xác");
 			}
 
-			const refreshToken = await this.createSessionRefreshToken(User);
+			const refreshToken = await this.createSessionRefreshToken(User, deviceInfo);
 
 			return this.formatAuthResponse(User, refreshToken);
 		} catch (error) {
@@ -77,7 +77,7 @@ export class AuthService {
 		}
 	}
 
-	async refreshToken(refreshToken: string): Promise<RefreshTokenResponse | undefined> {
+	async refreshToken(refreshToken: string, deviceInfo: string = "unknown"): Promise<RefreshTokenResponse | undefined> {
 		try {
 			const { sessionId } = JwtUtils.verifyRefreshToken(refreshToken);
 			const incomingHash = JwtUtils.hashToken(refreshToken);
@@ -101,7 +101,7 @@ export class AuthService {
 				throw ApiError.badRequest("Token hết hạn");
 			}
 
-			return this.rotateSessionTokensWithExpiry(user as TokenizableUser, session.session_id);
+			return this.rotateSessionTokensWithExpiry(user as TokenizableUser, session.session_id, deviceInfo);
 		} catch (error) {
 			logError("Refresh token failed:", error);
 			throw ApiError.internal("Lỗi Refresh token");
@@ -110,12 +110,13 @@ export class AuthService {
 
 	/* --------- 🛠️ Private helper methods ---------*/
 
-	private async createSessionRefreshToken(user: TokenizableUser): Promise<{ refreshToken: string; sessionId: string }> {
+	private async createSessionRefreshToken(user: TokenizableUser, deviceInfo: string): Promise<{ refreshToken: string; sessionId: string }> {
 		const sessionId = JwtUtils.generateSessionId();
 		const refreshToken = JwtUtils.generateRefreshToken(sessionId);
 		await this.userService.createSessionUser(user._id.toString(), {
 			session_id: sessionId,
 			hashed_refresh_token: JwtUtils.hashToken(refreshToken),
+			device_info: deviceInfo,
 			expires_at: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
 			created_at: new Date(),
 		});
@@ -139,7 +140,7 @@ export class AuthService {
 	}
 
 	// rotate refresh token
-	private async rotateSessionTokensWithExpiry(user: TokenizableUser, sessionId: string): Promise<RefreshTokenResponse | undefined> {
+	private async rotateSessionTokensWithExpiry(user: TokenizableUser, sessionId: string, deviceInfo: string): Promise<RefreshTokenResponse | undefined> {
 		const tokens = JwtUtils.generateTokenPair(user, sessionId);
 
 		// refresh token sẽ hết hạn
@@ -147,6 +148,7 @@ export class AuthService {
 
 		//Lưu refresh token mới vào DB (chỉ lưu hashed token để bảo mật)
 		await this.userService.updateUserSession(user._id.toString(), sessionId, {
+			device_info: deviceInfo,
 			hashed_refresh_token: JwtUtils.hashToken(tokens.refreshToken),
 			expires_at: refreshTokenExpiresAt,
 		});

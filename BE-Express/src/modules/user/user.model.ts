@@ -18,6 +18,7 @@ export interface UserModel extends Document {
 export interface IUserSession {
 	readonly session_id: string;
 	readonly hashed_refresh_token: string;
+	readonly device_info?: string;
 	readonly expires_at: Date;
 	readonly created_at: Date;
 }
@@ -71,6 +72,7 @@ const userSchema = new Schema(
 				{
 					session_id: { type: String, required: true },
 					hashed_refresh_token: { type: String, required: true },
+					device_info: { type: String, default: "unknown", trim: true },
 					expires_at: { type: Date, required: true },
 					created_at: { type: Date, default: Date.now },
 				},
