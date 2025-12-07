@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { User, UserModel, IUserSession } from "./user.model";
-import { UserSearchFilters, UserType } from "./user.type";
+import { UserSearchFilters, UserType, UpdateUser } from "./user.type";
 import { PaginationResult } from "@/utils/pagination";
 
 export class UserRepository {
@@ -22,6 +22,11 @@ export class UserRepository {
 		return result;
 	}
 
+	async updateUser(id: string, updateData: UpdateUser): Promise<UserModel | undefined | null> {
+		if (!this.isValidObjectId(id)) return null;
+		return User.findByIdAndUpdate(id, { $set: updateData }, { new: true, runValidators: true });
+	}
+
 	async createUser(userDataRepo: UserType): Promise<UserModel | undefined> {
 		const user = new User(userDataRepo);
 		return await user.save();
@@ -34,8 +39,8 @@ export class UserRepository {
 	}
 
 	async findUserById(id: string): Promise<UserModel | null> {
-	return await User.findById(id);
-}
+		return await User.findById(id);
+	}
 
 	/* ----- Session User ----- */
 
@@ -82,6 +87,8 @@ export class UserRepository {
 			{ $pull: { sessions: { session_id: sessionId } } }
 		);
 	}
+
+	/* ----- Other ----- */
 
 	// 🛡️ Private method
 	private buildSearchQuery(filters: UserSearchFilters): any {

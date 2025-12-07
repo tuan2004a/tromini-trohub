@@ -1,3 +1,5 @@
+import { UserRole } from "./user.type";
+
 export interface UserDto {
 	_id: string;
 	phone: string;
@@ -16,4 +18,13 @@ export interface PaginatedUserDto {
 	prevPage?: number | null;
 	nextPage?: number | null;
 }
-  
+
+export interface UpdateRequest {
+	_id: string;
+	phone: string;
+	hashedPassword: string;
+	displayName: string;
+	contractId: string;
+	roomId: string;
+	role?: UserRole;
+}

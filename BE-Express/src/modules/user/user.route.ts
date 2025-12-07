@@ -12,5 +12,6 @@ const userController = new UserController();
 //🛡️ private routes
 router.use(authMiddleware); 
 router.get("/getalluser", userController.getAllUsers.bind(userController));
+router.put("/update-user/:id", userController.UpdateUser.bind(userController));
 
 export default router;

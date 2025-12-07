@@ -1,5 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import { UserService } from "./user.service";
+import { UpdateRequest } from "./user.dto";
+import { sendSuccess } from "@/utils/response";
+
 
 export class UserController {
 	private readonly userService: UserService;
@@ -10,7 +13,6 @@ export class UserController {
 
 	getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 		try {
-
 			const { page = "1", limit = "10", search, filters } = req.query;
 
 			const result = await this.userService.getAllUsers({
@@ -25,7 +27,20 @@ export class UserController {
 				message: "Lấy danh sách người dùng thành công",
 				...result,
 			});
+		} catch (error) {
+			console.log("Error creating user:", error);
+			next(error);
+			throw error;
+		}
+	};
 
+	UpdateUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+		try {
+			const { id } = req.params;
+			const UpdateData: UpdateRequest = req.body;
+			const result = await this.userService.updateUser(id, UpdateData);
+
+			return sendSuccess(res, result, "cập nhập người dùng thành công");
 		} catch (error) {
 			console.log("Error creating user:", error);
 			next(error);

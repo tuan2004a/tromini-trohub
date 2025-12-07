@@ -29,3 +29,8 @@ export interface GetUsersParams {
 	search?: string;
 	filters?: any;
 }
+
+export interface UpdateUser extends UserType{
+	contractId: string;
+	roomId: string;
+}

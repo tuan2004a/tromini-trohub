@@ -1,7 +1,9 @@
 import { IUserSession, User, UserModel } from "./user.model";
 import { UserRepository } from "./user.repository";
 import { UserType, GetUsersParams } from "./user.type";
-import { UserDto, PaginatedUserDto } from "./user.dto";
+import { UserDto, PaginatedUserDto, UpdateRequest } from "./user.dto";
+import { logError } from "@/utils/logger";
+import { ApiError } from "@/utils/ApiError";
 
 export class UserService {
 	private readonly userRepository: UserRepository;
@@ -24,6 +26,20 @@ export class UserService {
 				role: u.role,
 			})),
 		};
+	}
+
+	async updateUser(id: string, UpdateData: UpdateRequest): Promise<UserModel | undefined | null> {
+		try {
+			const user = await this.userRepository.updateUser(id, UpdateData);
+			if (!user) {
+				throw ApiError.notFound("Không tìm thấy người dùng");
+			}
+
+			return user;
+		} catch (error) {
+			logError("Service-Delete:", error);
+			throw ApiError.internal("Lỗi xóa phòng");
+		}
 	}
 
 	async createUser(userData: UserType): Promise<UserModel | undefined | null> {

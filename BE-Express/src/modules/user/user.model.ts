@@ -1,5 +1,5 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
-import { UserRole, UserType } from "./user.type";
+import { UserRole } from "./user.type";
 import mongoosePaginate from "mongoose-paginate-v2";
 
 export interface UserModel extends Document {
@@ -7,6 +7,8 @@ export interface UserModel extends Document {
 	phone: string;
 	hashedPassword: string;
 	displayName: string;
+	contractId: string;
+	roomId: string;
 	role?: UserRole;
 	sessions?: IUserSession[];
 	createdAt: Date;
