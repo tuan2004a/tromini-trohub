@@ -72,7 +72,11 @@ export class ContractController {
 
 	FindUpdateStatus= async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 		try {
-			
+			const { id } = req.params;
+			const { status } =  req.body
+			const result = await this.contractService.findUpdateStatus(id, status);
+
+			return sendSuccess(res.status(201), result, "Cập nhập trạng thái hợp đồng thành công");
 		} catch (error) {
 			logError("Lỗi cập nhập trạng thái theo hợp đồng:", error);
 			next(ApiError.badRequest("Lỗi cập nhập trạng thái theo hợp đồng"));

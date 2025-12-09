@@ -35,11 +35,11 @@ export class UserRepository {
 	/* ----- Get Find ----- */
 
 	async findUserByPhone(phone: string): Promise<UserModel | null> {
-		return User.findOne({ phone });
+		return User.findOne({ phone }).exec();
 	}
 
 	async findUserById(id: string): Promise<UserModel | null> {
-		return await User.findById(id);
+		return await User.findById(id).exec();
 	}
 
 	/* ----- Session User ----- */

@@ -76,7 +76,7 @@ export class ContractService {
 	async findUpdateStatus(id: string, status: string): Promise<ContractResponse> {
 		try {
 			const contract = await this.contractRepository.findUpdateStatus(id, status);
-			if (!contract?.id) {
+			if (!contract) {
 				throw ApiError.notFound("Không tìm hợp đồng");
 			}
 

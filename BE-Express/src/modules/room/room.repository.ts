@@ -36,7 +36,7 @@ export class RoomRepository {
 
 	async findroomById(id: string): Promise<RoomModel | null> {
 		if (!this.isValidObjectId(id)) return null;
-		return Room.findById(id);
+		return Room.findById(id).lean<RoomModel>().exec();
 	}
 
 	/* ----- Other ----- */

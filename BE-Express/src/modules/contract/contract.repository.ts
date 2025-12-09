@@ -11,7 +11,7 @@ export class ContractRepository {
 	async getAllContractRepo(page = 1, limit = 1, filters: SearchFilters): Promise<PaginationResult<ContractModel>> {
 		const query = this.buildSearchQuery(filters);
 
-		const pagination = this.paginateRooms(page, limit);
+		const pagination = this.paginationOptions(page, limit);
 
 		const result = await Contract.paginate(query, pagination);
 
@@ -39,8 +39,9 @@ export class ContractRepository {
 		return await Contract.findByIdAndUpdate(id, { status }, { new: true });
 	}
 
-	async findContractsByUser() {
-		return await Contract.find().populate({ path: "partyA", select: "displayName" });
+	async findContractById(id: string): Promise<ContractModel | undefined | null> {
+		if (!this.isValidObjectId(id)) return null;
+		return await Contract.findById(id).lean<ContractModel>().exec();
 	}
 
 	/* ----- GET ----- */
@@ -69,7 +70,15 @@ export class ContractRepository {
 		return query;
 	}
 
-	private paginateRooms(page: number = 1, limit: number = 10): Promise<ContractModel | null> {
-		return Contract.paginate({}, { page, limit, sort: { createdAt: -1 } });
+	private paginationOptions(page: number, limit: number) {
+		return {
+			page,
+			limit,
+			sort: { createdAt: -1 },
+			populate: [
+				{ path: "representative_Id", select: "displayName email" },
+				{ path: "room_id", select: "name" },
+			],
+		};
 	}
 }
