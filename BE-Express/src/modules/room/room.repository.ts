@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 export class RoomRepository {
 	constructor() {}
 
-	/*----- CRUD ----- */
+	/* ----- CRUD ----- */
 
 	async getAllRoomsRepo(page: number = 1, limit: number = 10, filters: SearchFilters): Promise<PaginationResult<RoomModel>> {
 		const query = this.buildSearchQuery(filters);
@@ -32,7 +32,7 @@ export class RoomRepository {
 		return Room.findByIdAndDelete(id);
 	}
 
-	/* ----- Get Find ----- */
+	/* ----- Find ----- */
 
 	async findroomById(id: string): Promise<RoomModel | null> {
 		if (!this.isValidObjectId(id)) return null;
