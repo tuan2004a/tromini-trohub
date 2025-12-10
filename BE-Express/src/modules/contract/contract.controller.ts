@@ -70,10 +70,10 @@ export class ContractController {
 
 	/* ----- Find ----- */
 
-	FindUpdateStatus= async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+	FindUpdateStatus = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 		try {
 			const { id } = req.params;
-			const { status } =  req.body
+			const { status } = req.body;
 			const result = await this.contractService.findUpdateStatus(id, status);
 
 			return sendSuccess(res.status(201), result, "Cập nhập trạng thái hợp đồng thành công");
@@ -81,7 +81,15 @@ export class ContractController {
 			logError("Lỗi cập nhập trạng thái theo hợp đồng:", error);
 			next(ApiError.badRequest("Lỗi cập nhập trạng thái theo hợp đồng"));
 		}
-	}
+	};
+
+	FindContractById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+		try {
+		} catch (error) {
+			logError("Lỗi tìm hợp đồng theo Id:", error);
+			next(ApiError.badRequest("Lỗi tìm hợp đồng theo Id"));
+		}
+	};
 
 	/* ----- GET ----- */
 	/* ----- Other ----- */

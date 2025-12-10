@@ -87,6 +87,20 @@ export class ContractService {
 		}
 	}
 
+	async findContractById(id: string): Promise<ContractResponse | undefined> {
+		try {
+			const contract = await this.contractRepository.findContractById(id);
+			if (!contract) {
+				throw ApiError.notFound("Không tìm hợp đồng");
+			}
+
+			return this.formatContractResponse(contract);
+		} catch (error) {
+			logError("Service-Contract: ", error);
+			throw ApiError.internal("Lỗi tìm hợp đồng theo Id");
+		}
+	}
+
 	/* ----- GET ----- */
 	/* ----- Other ----- */
 

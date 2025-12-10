@@ -14,8 +14,7 @@ router.post("/create-room", ContracController.CreateContract.bind(ContracControl
 router.put("/update-room/:id", ContracController.UpdateContract.bind(ContracController));
 router.delete("/delete-room/:id", ContracController.DeleteContract.bind(ContracController));
 
-// router.get("/find-room/:id", ContracController..bind(ContracController));
-
+router.get("/find-room/:id", ContracController.FindContractById.bind(ContracController));
 router.post("/update-status/:id", ContracController.FindUpdateStatus.bind(ContracController));
 
 export default router;
