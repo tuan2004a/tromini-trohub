@@ -82,9 +82,12 @@ const billSchema = new Schema(
 		total: {
 			type: String,
 		},
+		dayTime: {
+			type: Date
+		}
 	},
 	{ timestamps: true }
 );
 
 billSchema.plugin(mongoosePaginate);
-export const Contract = mongoose.model<BillModel, mongoose.PaginateModel<BillModel>>("Bill", billSchema);
+export const Bill = mongoose.model<BillModel, mongoose.PaginateModel<BillModel>>("Bill", billSchema);
