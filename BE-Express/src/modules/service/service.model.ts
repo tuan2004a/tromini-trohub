@@ -9,7 +9,7 @@ export interface ServiceModel extends Document {
 	isActive: boolean;
 	image: string;
 	note: string;
-	types: string
+	types: ServiceTypes;
 }
 
 const serviceSchema = new Schema(
