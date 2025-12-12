@@ -44,4 +44,4 @@ const serviceSchema = new Schema(
 );
 
 serviceSchema.plugin(mongoosePaginate);
-export const Contract = mongoose.model<ServiceModel, mongoose.PaginateModel<ServiceModel>>("Service", serviceSchema);
+export const Service = mongoose.model<ServiceModel, mongoose.PaginateModel<ServiceModel>>("Service", serviceSchema);
