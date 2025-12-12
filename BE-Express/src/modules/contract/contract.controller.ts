@@ -85,6 +85,10 @@ export class ContractController {
 
 	FindContractById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 		try {
+			const { id } = req.params;
+			const result = await this.contractService.findContractById(id);
+
+			return sendSuccess(res.status(201), result, "Tìm hợp đồng theo Id thành công");
 		} catch (error) {
 			logError("Lỗi tìm hợp đồng theo Id:", error);
 			next(ApiError.badRequest("Lỗi tìm hợp đồng theo Id"));

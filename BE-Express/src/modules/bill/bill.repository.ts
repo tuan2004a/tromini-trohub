@@ -33,6 +33,17 @@ export class BillRepository {
 	}
 
 	/* ----- Find ----- */
+
+	async findUpdateStatus(id: string, status: string): Promise<BillModel | undefined | null> {
+		if (!this.isValidObjectId(id)) return null;
+		return await Bill.findByIdAndUpdate(id, { status }, { new: true });
+	}
+
+	async findBillById(id: string): Promise<BillModel | undefined | null> {
+		if (!this.isValidObjectId(id)) return null;
+		return await Bill.findById(id).lean<BillModel>().exec();
+	}
+
 	/* ----- GET ----- */
 	/* ----- Other ----- */
 

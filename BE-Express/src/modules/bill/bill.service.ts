@@ -41,7 +41,7 @@ export class BillService {
 			return this.formatBillResponse(bill);
 		} catch (error) {
 			logError("Service-Bill:", error);
-			throw ApiError.internal("Lỗi tạo hợp đồng");
+			throw ApiError.internal("Lỗi tạo hoá đơn");
 		}
 	}
 
@@ -49,13 +49,13 @@ export class BillService {
 		try {
 			const bill = await this.billRepository.updateBill(id, UpdateData);
 			if (!bill) {
-				throw ApiError.notFound("Không tìm hợp đồng");
+				throw ApiError.notFound("Không tìm hoá đơn");
 			}
 
 			return this.formatBillResponse(bill);
 		} catch (error) {
 			logError("Service-Bill:", error);
-			throw ApiError.internal("Lỗi cập nhập hợp đồng");
+			throw ApiError.internal("Lỗi cập nhập hoá đơn");
 		}
 	}
 
@@ -63,19 +63,45 @@ export class BillService {
 		try {
 			const bill = await this.billRepository.deleteBill(id);
 			if (!bill) {
-				throw ApiError.notFound("Không tìm hợp đồng");
+				throw ApiError.notFound("Không tìm hoá đơn");
 			}
 
 			return this.formatBillResponse(bill);
 		} catch (error) {
 			logError("Service-Bill: ", error);
-			throw ApiError.internal("Lỗi xóa hợp đồng");
+			throw ApiError.internal("Lỗi xóa hoá đơn");
 		}
 	}
 
 	/* ----- Find ----- */
 
-	
+	async findUpdateStatus(id: string, status: string): Promise<BillResponse> {
+		try {
+			const contract = await this.billRepository.findUpdateStatus(id, status);
+			if (!contract) {
+				throw ApiError.notFound("Không tìm hoá đơn");
+			}
+
+			return this.formatBillResponse(contract);
+		} catch (error) {
+			logError("Service-Bill: ", error);
+			throw ApiError.internal("Lỗi cập nhập status hoá đơn");
+		}
+	}
+
+	async findBillById(id: string): Promise<BillResponse | undefined> {
+		try {
+			const contract = await this.billRepository.findBillById(id);
+			if (!contract) {
+				throw ApiError.notFound("Không tìm hoá đơn");
+			}
+
+			return this.formatBillResponse(contract);
+		} catch (error) {
+			logError("Service-Bill: ", error);
+			throw ApiError.internal("Lỗi tìm hoá đơn theo Id");
+		}
+	}
 
 	/* ----- GET ----- */
 	/* ----- Other ----- */

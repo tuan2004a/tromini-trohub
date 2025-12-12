@@ -24,10 +24,10 @@ export class BillController {
 				filters: filters ? JSON.parse(filters as string) : undefined,
 			});
 
-			return sendSuccess(res, result, "Lấy danh sách hợp đồng thành công");
+			return sendSuccess(res, result, "Lấy danh sách hóa đơn thành công");
 		} catch (error) {
-			logError("Lỗi lấy danh sách hợp đồng:", error);
-			next(ApiError.badRequest("Lỗi lấy danh sách hợp đồng"));
+			logError("Lỗi lấy danh sách hóa đơn:", error);
+			next(ApiError.badRequest("Lỗi lấy danh sách hóa đơn"));
 		}
 	};
 
@@ -36,10 +36,10 @@ export class BillController {
 			const CreateBillData: CreateRequest = req.body;
 			const result = await this.billService.createBill(CreateBillData);
 
-			return sendSuccess(res.status(201), result, "Tạo hợp đồng thành công");
+			return sendSuccess(res.status(201), result, "Tạo hóa đơn thành công");
 		} catch (error) {
-			logError("Lỗi tạo hợp đồng:", error);
-			next(ApiError.badRequest("Lỗi tạo hợp đồng"));
+			logError("Lỗi tạo hóa đơn:", error);
+			next(ApiError.badRequest("Lỗi tạo hóa đơn"));
 		}
 	};
 
@@ -49,10 +49,10 @@ export class BillController {
 			const UpdateBillData: UpdateRequest = req.body;
 			const result = await this.billService.updateBill(id, UpdateBillData);
 
-			return sendSuccess(res.status(201), result, "Cập nhập hợp đồng thành công");
+			return sendSuccess(res.status(201), result, "Cập nhập hóa đơn thành công");
 		} catch (error) {
-			logError("Lỗi cập nhập hợp đồng:", error);
-			next(ApiError.badRequest("Lỗi cập nhập hợp đồng"));
+			logError("Lỗi cập nhập hóa đơn:", error);
+			next(ApiError.badRequest("Lỗi cập nhập hóa đơn"));
 		}
 	};
 
@@ -61,14 +61,40 @@ export class BillController {
 			const { id } = req.params;
 			const result = await this.billService.deleteBill(id);
 
-			return sendSuccess(res.status(201), result, "Xoá hợp đồng thành công");
+			return sendSuccess(res.status(201), result, "Xoá hóa đơn thành công");
 		} catch (error) {
-			logError("Lỗi xóa hợp đồng:", error);
-			next(ApiError.badRequest("Lỗi xóa hợp đồng"));
+			logError("Lỗi xóa hóa đơn:", error);
+			next(ApiError.badRequest("Lỗi xóa hóa đơn"));
 		}
 	};
 
 	/* ----- Find ----- */
+
+	FindUpdateStatus = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+		try {
+			const { id } = req.params;
+			const { status } = req.body;
+			const result = await this.billService.findUpdateStatus(id, status);
+
+			return sendSuccess(res.status(201), result, "Cập nhập trạng thái hóa đơn thành công");
+		} catch (error) {
+			logError("Lỗi cập nhập trạng thái theo hóa đơn:", error);
+			next(ApiError.badRequest("Lỗi cập nhập trạng thái theo hóa đơn"));
+		}
+	};
+
+	FindBillById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+		try {
+			const { id } = req.params;
+			const result = await this.billService.findBillById(id);
+
+			return sendSuccess(res.status(201), result, "lấy hóa đơn theo Id thành công");
+		} catch (error) {
+			logError("Lỗi tìm hóa đơn theo Id:", error);
+			next(ApiError.badRequest("Lỗi tìm hóa đơn theo Id"));
+		}
+	};
+
 	/* ----- GET ----- */
 	/* ----- Other ----- */
 
