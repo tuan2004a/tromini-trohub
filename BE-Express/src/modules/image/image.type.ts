@@ -78,3 +78,25 @@ export interface UpdateImage {
 	};
 	processingError?: string;
 }
+
+export interface ImageResponse {
+	_id: any;
+	filename: string;
+	originalFilename: string;
+	mimeType: string;
+	originalSize: number;
+	displayUrl: string;
+	imgbbId: string;
+	deleteUrl: string;
+	status: ImageStatus;
+	type: ImageTypes;
+	uploadedBy: mongoose.Types.ObjectId;
+	metadata?: {
+		width?: number;
+		height?: number;
+		format?: string;
+		colorSpace?: string;
+		hasAlpha?: boolean;
+	};
+	processingError?: string;
+}

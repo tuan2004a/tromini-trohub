@@ -28,7 +28,7 @@ export interface ImageModel extends Document {
 
 const imageSchema = new Schema(
 	{
-		fileName: {
+		filename: {
 			type: String,
 			required: true,
 			trim: true,
