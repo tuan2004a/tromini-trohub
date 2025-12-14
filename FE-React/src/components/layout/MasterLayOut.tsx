@@ -1,14 +1,17 @@
 import type React from "react";
 import Navbar from "./Navbar";
+import Sidebar from "./SIdebar";
 
 interface MasterLayOut {
-	children: React.ReactNode
+	children: React.ReactNode;
 }
 
 const MasterLayOut = ({ children }: MasterLayOut) => {
 	return (
 		<div className="bg-white">
-			<div>{/* side bar */}</div>
+			<div>
+				<Sidebar />
+			</div>
 			<div>
 				<header>
 					<Navbar />
@@ -19,4 +22,4 @@ const MasterLayOut = ({ children }: MasterLayOut) => {
 	);
 };
 
-export default MasterLayOut
+export default MasterLayOut;
