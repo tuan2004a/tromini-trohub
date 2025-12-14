@@ -29,6 +29,9 @@ importers:
       tailwindcss:
         specifier: ^4.1.17
         version: 4.1.17
+      uikit:
+        specifier: ^3.25.1
+        version: 3.25.1
     devDependencies:
       '@eslint/js':
         specifier: ^9.39.1
@@ -1376,6 +1379,9 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  uikit@3.25.1:
+    resolution: {integrity: sha512-N2jMAAtWcK0xwx1Ur4B0QJTf+jCvd4A0djbdM0fjXSGYjksPZhyZ4tzIfooBO/yPW/kU89llubVwp9eLWv7mKw==}
+
   undici-types@7.16.0:
     resolution: {integrity: sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==}
 
@@ -2637,6 +2643,8 @@ snapshots:
       - supports-color
 
   typescript@5.9.3: {}
+
+  uikit@3.25.1: {}
 
   undici-types@7.16.0: {}
 
