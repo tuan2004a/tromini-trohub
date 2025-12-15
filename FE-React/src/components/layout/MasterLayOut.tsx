@@ -1,6 +1,7 @@
 import type React from "react";
 import Navbar from "./Navbar";
-import Sidebar from "./SIdebar";
+import Sidebar from "./Sidebar";
+import { Theme } from "@radix-ui/themes";
 
 interface MasterLayOut {
 	children: React.ReactNode;
@@ -8,17 +9,17 @@ interface MasterLayOut {
 
 const MasterLayOut = ({ children }: MasterLayOut) => {
 	return (
-		<div className="bg-white">
-			<div>
+		<Theme className="flex">
+			<div className="max-w-64 w-64 h-dvh border-r border-[#e2e8f0] bg-white fixed top-0 left-0">
 				<Sidebar />
 			</div>
 			<div>
-				<header>
+				<header className="border-b border-[#e2e8f0] bg-white fixed w-[calc(100%-256px)] top-0 right-0">
 					<Navbar />
 				</header>
-				<div>{children}</div>
+				<div className="">{children}</div>
 			</div>
-		</div>
+		</Theme>
 	);
 };
 

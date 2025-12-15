@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
 
-
 *{
     font-family: "Be Vietnam Pro", sans-serif;
     font-style: normal;
 }
 
+.uk-active{
+    @apply bg-[#137fec]/10 text-[#137fec]! shadow-sm shadow-blue-100 ring-1 ring-[#137fec]/10 rounded-xl
+}
+
+.menu-sidebar{
+    @apply flex items-center gap-2 px-4 py-3 rounded-xl text-slate-700 hover:bg-[#137fec]/5 hover:text-[#137fec] transition-all duration-200
+}
