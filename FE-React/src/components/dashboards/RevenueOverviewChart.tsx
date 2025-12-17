@@ -72,7 +72,7 @@ const RevenueOverviewChart: React.FC = () => {
 	};
 
 	return (
-		<div className="bg-white p-5 rounded-xl mt-5">
+		<div className="bg-white p-5 rounded-xl w-full">
 			<span className="flex justify-between mb-5">
 				<div>
 					<span className="text-lg font-bold">Biểu đồ doanh thu</span>

@@ -2,7 +2,7 @@ import { FaDoorOpen } from "react-icons/fa";
 
 const DashboardOverview = () => {
 	return (
-		<div className="grid grid-cols-4 w-full gap-3">
+		<div className="grid grid-cols-4 w-full gap-5">
 			{/* Card Tổng số phòng */}
 			<div className="flex flex-row-reverse justify-between w-full h-35 roundex-xl bg-white p-5 rounded-xl">
 				<span>
