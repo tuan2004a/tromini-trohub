@@ -7,7 +7,7 @@
 }
 
 .uk-active{
-    @apply bg-[#137fec]/10 text-[#137fec]! shadow-sm shadow-blue-100 ring-1 ring-[#137fec]/10 rounded-xl
+    @apply bg-[#137fec]/15 text-[#137fec]! shadow-sm shadow-blue-100 ring-1 ring-[#137fec]/10 rounded-xl font-semibold border-l-5 
 }
 
 .menu-sidebar{

@@ -9,7 +9,7 @@ interface thead {
 const TH: React.FC<thead> = ({ children, className }) => {
 	return (
 		<th
-			className={`${className} text-left py-3 px-4 font-semibold text-slate-400 bg-slate-50/80`}
+			className={`${className} text-left p-4 font-semibold text-slate-400 bg-slate-50/80`}
 		>
 			{children}
 		</th>

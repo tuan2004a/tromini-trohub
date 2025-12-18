@@ -57,6 +57,14 @@ const RecentTransactions = () => {
 							Đã thu
 						</TD>
 					</tr>
+					<tr>
+						<TD className="font-medium!">P201</TD>
+						<TD className="text-slate-500">Tiền phòng T10</TD>
+						<TD className="text-right! font-bold!">2.000.000đ</TD>
+						<TD className="text-right! text-sm text-green-600">
+							Đã thu
+						</TD>
+					</tr>
 				</tbody>
 			</table>
 		</div>
