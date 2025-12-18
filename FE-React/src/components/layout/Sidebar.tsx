@@ -4,41 +4,53 @@ import { FaUsers } from "react-icons/fa";
 import { Button } from "@radix-ui/themes";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Sidebar = React.memo(() => {
+	const location = useLocation();
+
+	const getNavClassName = ({ isActive }: { isActive: boolean }) => {
+		return `menu-sidebar ${isActive ? "uk-active" : ""}`;
+	};
+
+	const getDashboardClassName = () => {
+		// Custom active logic for dashboard: active if pathname is "/" or "/dashboard"
+		const isCustomActive = location.pathname === "/" || location.pathname === "/thong-ke";
+		return `menu-sidebar ${isCustomActive ? "uk-active" : ""}`;
+	};
+
 	return (
 		<div className="flex flex-col justify-between h-full p-5 pt-0">
 			<div className="h-18">
-				{/* logo */}
-				<img src="" alt="" />
+				{/* Logo placeholder */}
+				<img src="#" alt="Trohub Logo" />
 				<p>Trohub</p>
 			</div>
 			<nav className="py-5 grow">
-				<ul className="space-y-1.5 block!">
-					<li className="">
-						<NavLink to="/" className={({ isActive }) => `menu-sidebar ${isActive ? "uk-active" : ""}`}>
+				<ul className="space-y-1.5 block">
+					<li>
+						<NavLink to="/thong-ke" className={getDashboardClassName}>
 							<MdOutlineDashboard className="text-2xl" />
 							Tổng quan
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/quan-ly-phong" className={({ isActive }) => `menu-sidebar ${isActive ? "uk-active" : ""}`}>
+						<NavLink to="/quan-ly-phong" className={getNavClassName}>
 							<FaDoorOpen className="text-2xl" />
 							Quản lý phòng
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/quan-ly-tai-khoan" className={({ isActive }) => `menu-sidebar ${isActive ? "uk-active" : ""}`}>
+						<NavLink to="/quan-ly-tai-khoan" className={getNavClassName}>
 							<FaUsers className="text-2xl" />
-							Người thê
+							Người thuê
 						</NavLink>
 					</li>
 				</ul>
 			</nav>
 			<div>
-				<Button size="4" color="red" variant="soft" className="w-full! rounded-xl! gap-x-2! cursor-pointer!">
-					<FaArrowRightFromBracket className="2xl" />
+				<Button size="4" color="red" variant="soft" className="w-full rounded-xl gap-x-2 cursor-pointer">
+					<FaArrowRightFromBracket className="text-2xl" />
 					Đăng xuất
 				</Button>
 			</div>
