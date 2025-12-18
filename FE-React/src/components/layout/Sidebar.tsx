@@ -4,6 +4,7 @@ import { FaUsers } from "react-icons/fa";
 import { Button } from "@radix-ui/themes";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = React.memo(() => {
 	return (
@@ -13,35 +14,30 @@ const Sidebar = React.memo(() => {
 				<img src="" alt="" />
 				<p>Trohub</p>
 			</div>
-			<nav className="py-5 grow " uk-navbar>
-				<ul className=" space-y-1.5 block!">
+			<nav className="py-5 grow">
+				<ul className="space-y-1.5 block!">
 					<li className="">
-						<a className="menu-sidebar uk-active" href="#">
+						<NavLink to="/" className={({ isActive }) => `menu-sidebar ${isActive ? "uk-active" : ""}`}>
 							<MdOutlineDashboard className="text-2xl" />
 							Tổng quan
-						</a>
-					</li>
-					<li className="uk-parent">
-						<a className="menu-sidebar" href="#">
-							<FaDoorOpen className="text-2xl" />
-							Quản lý phòng
-						</a>
+						</NavLink>
 					</li>
 					<li>
-						<a className="menu-sidebar" href="#">
+						<NavLink to="/quan-ly-phong" className={({ isActive }) => `menu-sidebar ${isActive ? "uk-active" : ""}`}>
+							<FaDoorOpen className="text-2xl" />
+							Quản lý phòng
+						</NavLink>
+					</li>
+					<li>
+						<NavLink to="/quan-ly-tai-khoan" className={({ isActive }) => `menu-sidebar ${isActive ? "uk-active" : ""}`}>
 							<FaUsers className="text-2xl" />
 							Người thê
-						</a>
+						</NavLink>
 					</li>
 				</ul>
 			</nav>
 			<div>
-				<Button
-					size="4"
-					color="red"
-					variant="soft"
-					className="w-full! rounded-xl! gap-x-2! cursor-pointer!"
-				>
+				<Button size="4" color="red" variant="soft" className="w-full! rounded-xl! gap-x-2! cursor-pointer!">
 					<FaArrowRightFromBracket className="2xl" />
 					Đăng xuất
 				</Button>
