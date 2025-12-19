@@ -20,6 +20,9 @@ importers:
       axios:
         specifier: ^1.13.2
         version: 1.13.2
+      classnames:
+        specifier: ^2.5.1
+        version: 2.5.1
       react:
         specifier: ^19.2.0
         version: 19.2.1
@@ -32,6 +35,9 @@ importers:
       react-icons:
         specifier: ^5.5.0
         version: 5.5.0(react@19.2.1)
+      react-paginate:
+        specifier: ^8.3.0
+        version: 8.3.0(react@19.2.1)
       react-router:
         specifier: ^7.10.1
         version: 7.10.1(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
@@ -2093,6 +2099,11 @@ packages:
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+
+  react-paginate@8.3.0:
+    resolution: {integrity: sha512-TptZE37HPkT3R+7AszWA++LOTIsIHXcCSWMP9WW/abeF8sLpJzExFB/dVs7xbtqteJ5njF6kk+udTDC0AR3y5w==}
+    peerDependencies:
+      react: ^16 || ^17 || ^18 || ^19
 
   react-remove-scroll-bar@2.3.8:
     resolution: {integrity: sha512-9r+yi9+mgU33AKcj6IbT9oRCO78WriSj6t/cF8DWBZJ9aOGPOTEDvdUDz1FwKim7QXWwmHqtdHnRJfhAxEG46Q==}
@@ -4318,6 +4329,11 @@ snapshots:
       react: 19.2.1
 
   react-is@16.13.1: {}
+
+  react-paginate@8.3.0(react@19.2.1):
+    dependencies:
+      prop-types: 15.8.1
+      react: 19.2.1
 
   react-remove-scroll-bar@2.3.8(@types/react@19.2.7)(react@19.2.1):
     dependencies:

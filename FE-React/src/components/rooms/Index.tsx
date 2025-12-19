@@ -22,8 +22,8 @@ const Rooms = () => {
 					</div>
 				</section>
 
-				<section className="bg-white">
-					<RoomTable/>
+				<section className="bg-white mt-5 rounded-xl border border-slate-200">
+					<RoomTable />
 				</section>
 			</div>
 		</MasterLayOut>
