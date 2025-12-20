@@ -21,9 +21,10 @@ const Sidebar = React.memo(() => {
 
 	return (
 		<div className="flex flex-col justify-between h-full p-5 pt-0">
-			<div className="h-18">
-				{/* Logo placeholder */}
-				<img src="#" alt="Trohub Logo" />
+			<div className="h-18 flex items-center">
+				<div className="w-23 rounded-full">
+					<img className="" src="/logo-trohub.png" alt="Trohub logo, a property management platform for rental accommodations" />
+				</div>
 				<p>Trohub</p>
 			</div>
 			<nav className="py-5 grow">
@@ -41,15 +42,15 @@ const Sidebar = React.memo(() => {
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/quan-ly-tai-khoan" className={getNavClassName}>
+						<NavLink to="/quan-ly-dich-vu" className={getNavClassName}>
 							<FaUsers className="text-2xl" />
 							Người thuê
 						</NavLink>
 					</li>
 				</ul>
 			</nav>
-			<div>
-				<Button size="4" color="red" variant="soft" className="w-full rounded-xl gap-x-2 cursor-pointer">
+			<div className="w-full">
+				<Button size="4" color="red" variant="soft" className="w-full! rounded-xl gap-x-2 cursor-pointer!">
 					<FaArrowRightFromBracket className="text-2xl" />
 					Đăng xuất
 				</Button>

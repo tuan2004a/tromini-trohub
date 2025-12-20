@@ -1,53 +1,46 @@
-import { FaDoorOpen, FaEye, FaTrash, FaWifi } from "react-icons/fa";
+import { FaEye, FaTrash, FaWifi } from "react-icons/fa";
 import TD from "../common/table/td";
 import TH from "../common/table/th";
-import StatusBadge from "../common/card/statusBadge";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import BtnAction from "../common/button/btnAction";
 import PaginationTable from "../common/table/paginationTable";
-import { LuAirVent } from "react-icons/lu";
+import StatusBadge from "../common/card/statusBadge";
 
-const RoomTable = () => {
+const ServiceTable = () => {
 	return (
 		<div>
 			<table className="w-full ">
 				<thead>
 					<tr className="bg-slate-100 border-b border-slate-200">
-						<TH className="rounded-tl-xl">Phòng</TH>
-						<TH>Tag</TH>
-						<TH className="">Giá thuê</TH>
-						<TH className="">Trạng thái</TH>
-						<TH className="">Dịch vụ</TH>
+						<TH className="rounded-tl-xl">Dịch vụ</TH>
+						<TH>icon</TH>
+						<TH>Giá thuê</TH>
+						<TH>Đơn vị tính</TH>
+						<TH>Mô tả</TH>
+						<TH>Trạng thái</TH>
 						<TH className="rounded-tr-xl">Thao tác</TH>
 					</tr>
 				</thead>
 				<tbody className="*:even:bg-slate-50">
 					<tr>
 						<TD className="font-medium! flex items-center gap-2">
-							<div className="size-10 rounded-xl bg-slate-100 flex items-center justify-center border border-slate-200 text-slate-500">
-								<FaDoorOpen className="text-2xl" />
+							<div className="size-10 rounded-xl bg-slate-100 flex items-center justify-center border border-slate-200">
+								<img src="#" alt="dịch vụ" />
 							</div>
-							<div>
-								<p className="font-bold text-slate-800">P101</p>
-								<p className="text-xs text-slate-500">Tầng 1</p>
-							</div>
+							<p className="font-semibold text-slate-600">Internet</p>
 						</TD>
 						<TD className="text-slate-500">
-							<span className="bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md text-xs font-medium border border-slate-200">Giường 2 tầng</span>
-						</TD>
-						<TD className=" font-bold!">2.500.000đ</TD>
-						<TD>
-							<StatusBadge className="bg-red-50 text-red-700 border-red-200" classCircle=" bg-red-500 ">
-								Đang thuê
-							</StatusBadge>
-						</TD>
-						<TD className="flex -space-x-3 *:hover:z-999">
 							<div className="size-8 rounded-full bg-white border border-slate-200 flex items-center justify-center">
 								<FaWifi className="text-slate-500" />
 							</div>
-							<div className="size-8 rounded-full bg-white border border-slate-200 flex items-center justify-center">
-								<LuAirVent className="text-slate-500" />
-							</div>
+						</TD>
+						<TD className="font-bold!">100.000đ</TD>
+						<TD className="text-sm underline decoration-sky-500 decoration-2 underline-offset-2 text-slate-500">Phòng / tháng</TD>
+						<TD className="text-slate-500 max-w-[200px] truncate">Gói cước 5G tốc độ cao</TD>
+						<TD>
+							<StatusBadge className="bg-green-50 text-green-500 border-green-200" classCircle=" bg-green-500! ">
+								Hoạt động
+							</StatusBadge>
 						</TD>
 						<TD className="space-x-2">
 							<BtnAction dataTooltip="Chi tiết" className="bg-yellow-500">
@@ -70,4 +63,4 @@ const RoomTable = () => {
 	);
 };
 
-export default RoomTable;
+export default ServiceTable;

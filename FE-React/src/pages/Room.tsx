@@ -1,8 +1,8 @@
-import Search from "../common/input/search";
-import MasterLayOut from "../layout/MasterLayOut";
-import BtnAddNew from "../common/button/btnAddNew";
-import BtnPrime from "../common/button/btnPrime";
-import RoomTable from "./RoomTable";
+import Search from "@common/input/search";
+import MasterLayOut from "@layout/MasterLayOut";
+import BtnAddNew from "@common/button/btnAddNew";
+import BtnPrime from "@common/button/btnPrime";
+import RoomTable from "@components/rooms/RoomTable";
 
 const Rooms = () => {
 	return (

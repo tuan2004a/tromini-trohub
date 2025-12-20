@@ -26,6 +26,11 @@ const getDynamicText = (pathname: string): DynamicText => {
 				title: "Danh sách phòng",
 				subtitle: "Quản lý trạng thái và thông tin phòng trọ",
 			};
+		case "/quan-ly-dich-vu":
+			return {
+				title: "Danh sách dịch vụ",
+				subtitle: "Thiết lập giá và danh mục dịch vụ toàn hệ thống.",
+			};
 		default:
 			return {
 				title: "Trang không xác định",

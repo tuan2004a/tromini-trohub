@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 interface tdProps {
 	children: ReactNode;
-	className?: string
+	className?: string;
 }
 
 const TD = ({ children, className }: tdProps) => {

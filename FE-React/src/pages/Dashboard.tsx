@@ -1,9 +1,9 @@
-import MasterLayOut from "@components/layout/MasterLayOut";
-import DashboardOverview from "./DashboardOverview";
-import RevenueOverviewChart from "./RevenueOverviewChart";
-import PaymentStatusDonut from "./PaymentStatusDonut";
-import ImportantNotice from "./ImportantNotice";
-import RecentTransactions from "./RecentTransactions";
+import MasterLayOut from "@layout/MasterLayOut";
+import DashboardOverview from "@components/dashboards/DashboardOverview";
+import RevenueOverviewChart from "@components/dashboards/RevenueOverviewChart";
+import PaymentStatusDonut from "@components/dashboards/PaymentStatusDonut";
+import ImportantNotice from "@components/dashboards/ImportantNotice";
+import RecentTransactions from "@components/dashboards/RecentTransactions";
 
 const dashboards = () => {
 	return (
@@ -25,7 +25,7 @@ const dashboards = () => {
 						<ImportantNotice />
 					</div>
 					<div className="flex-1">
-						<RecentTransactions/>
+						<RecentTransactions />
 					</div>
 				</section>
 			</div>
