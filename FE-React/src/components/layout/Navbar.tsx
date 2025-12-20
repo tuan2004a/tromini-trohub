@@ -29,7 +29,12 @@ const getDynamicText = (pathname: string): DynamicText => {
 		case "/quan-ly-dich-vu":
 			return {
 				title: "Danh sách dịch vụ",
-				subtitle: "Thiết lập giá và danh mục dịch vụ toàn hệ thống.",
+				subtitle: "Thiết lập giá và danh mục dịch vụ toàn hệ thống",
+			};
+		case "/quan-ly-nguoi-dung":
+			return {
+				title: "Danh sách người thuê",
+				subtitle: "Danh sách tất cả khách thuê hiện tại",
 			};
 		default:
 			return {

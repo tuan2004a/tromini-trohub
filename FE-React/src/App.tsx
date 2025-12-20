@@ -5,6 +5,7 @@ import Dashboards from "@page/Dashboard";
 import Rooms from "@page/Service";
 import NotFoundPage from "@page/NotFoundPage";
 import Service from "@page/Service";
+import User from "@page/User";
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 				<Route path="/thong-ke" element={<Dashboards />} />
 				<Route path="/quan-ly-phong" element={<Rooms />} />
 				<Route path="/quan-ly-dich-vu" element={<Service />} />
+				<Route path="/quan-ly-nguoi-dung" element={<User />} />
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
 		</Router>

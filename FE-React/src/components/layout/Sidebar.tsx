@@ -1,8 +1,7 @@
 import { MdOutlineDashboard } from "react-icons/md";
-import { FaDoorOpen } from "react-icons/fa";
-import { FaUsers } from "react-icons/fa";
+import { FaDoorOpen, FaUsers } from "react-icons/fa";
 import { Button } from "@radix-ui/themes";
-import { FaArrowRightFromBracket } from "react-icons/fa6";
+import { FaArrowRightFromBracket, FaBellConcierge } from "react-icons/fa6";
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
@@ -43,6 +42,12 @@ const Sidebar = React.memo(() => {
 					</li>
 					<li>
 						<NavLink to="/quan-ly-dich-vu" className={getNavClassName}>
+							<FaBellConcierge className="text-2xl" />
+							Dịch vụ
+						</NavLink>
+					</li>
+					<li>
+						<NavLink to="/quan-ly-nguoi-dung" className={getNavClassName}>
 							<FaUsers className="text-2xl" />
 							Người thuê
 						</NavLink>
