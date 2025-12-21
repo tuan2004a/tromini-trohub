@@ -1,7 +1,5 @@
-// import td from "../common/table/td";
-
-import TD from "../common/table/td";
-import TH from "../common/table/th";
+import TD from "@common/table/td";
+import TH from "@common/table/th";
 
 const RecentTransactions = () => {
 	return (

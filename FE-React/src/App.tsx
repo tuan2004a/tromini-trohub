@@ -2,9 +2,9 @@ import "./index.css";
 import "@radix-ui/themes/styles.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Dashboards from "@page/Dashboard";
-import Rooms from "@page/Service";
+import Rooms from "@page/Room";
 import NotFoundPage from "@page/NotFoundPage";
-import Service from "@page/Service";
+import Service from "@/pages/CustomerService";
 import User from "@page/User";
 
 function App() {

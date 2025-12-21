@@ -1,9 +1,9 @@
 import MasterLayOut from "@layout/MasterLayOut";
-import ServiceTable from "@/components/service/ServiceTable";
+import ServiceTable from "@/components/customerService/ServiceTable";
 import BtnAddNew from "@common/button/btnAddNew";
 import Search from "@common/input/search";
 
-const Service = () => {
+const customerService = () => {
 	return (
 		<MasterLayOut>
 			<div className="size-full p-8">
@@ -24,4 +24,4 @@ const Service = () => {
 	);
 };
 
-export default Service;
+export default customerService;

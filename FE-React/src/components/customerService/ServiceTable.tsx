@@ -3,17 +3,19 @@ import PaginationTable from "@common/table/paginationTable";
 import { memo } from "react";
 import Row from "./table/Row";
 
-const RoomTable = memo(() => {
+const ServiceTable = memo(() => {
+	
 	return (
 		<div>
 			<table className="w-full ">
 				<thead>
 					<tr className="bg-slate-100 border-b border-slate-200">
-						<TH className="rounded-tl-xl">Phòng</TH>
-						<TH>Tag</TH>
-						<TH className="">Giá thuê</TH>
-						<TH className="">Trạng thái</TH>
-						<TH className="">Dịch vụ</TH>
+						<TH className="rounded-tl-xl">Dịch vụ</TH>
+						<TH>icon</TH>
+						<TH>Giá thuê</TH>
+						<TH>Đơn vị tính</TH>
+						<TH>Mô tả</TH>
+						<TH>Trạng thái</TH>
 						<TH className="rounded-tr-xl">Thao tác</TH>
 					</tr>
 				</thead>
@@ -28,4 +30,4 @@ const RoomTable = memo(() => {
 	);
 });
 
-export default RoomTable;
+export default ServiceTable;

@@ -13,3 +13,14 @@
 .menu-sidebar{
     @apply flex items-center gap-2 px-4 py-3 rounded-xl text-slate-700 hover:bg-[#137fec]/5 hover:text-[#137fec] transition-all duration-200
 }
+
+select,::picker(select){
+    appearance: base-select;
+}
+::picker(select){
+    border: none;
+    border-radius: 6px;
+    background-color: #f1f5f9 !important;
+    margin-top: 5px;
+    box-shadow: 0 8px 30px rgb(0,0,0,0.12);
+}
