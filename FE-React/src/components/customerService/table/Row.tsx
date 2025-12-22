@@ -41,7 +41,7 @@ const Row = memo(() => {
 			<TD className="text-sm underline decoration-sky-500 decoration-2 underline-offset-2 text-slate-500">Phòng / tháng</TD>
 			<TD className="text-slate-500 max-w-[200px] truncate">Gói cước 5G tốc độ cao</TD>
 			<TD>
-				<select value={value} onChange={handleChange} className={`${STATUS_CUSTOMER_SERVICE[value as StatusKeyService].className} w-30 outline-none rounded-full px-3 py-1.5 text-xs font-semibold border transition-colors `}>
+				<select value={value} onChange={handleChange} className={`${STATUS_CUSTOMER_SERVICE[value as StatusKeyService].className} selectStatus w-30 outline-none rounded-full px-3 py-1.5 text-xs font-semibold border transition-colors `}>
 					{statusOption}
 				</select>
 			</TD>

@@ -52,6 +52,12 @@ const Sidebar = React.memo(() => {
 							Người thuê
 						</NavLink>
 					</li>
+					<li>
+						<NavLink to="/quan-ly-hoa-don" className={getNavClassName}>
+							<FaUsers className="text-2xl" />
+							Hóa đơn
+						</NavLink>
+					</li>
 				</ul>
 			</nav>
 			<div className="w-full">

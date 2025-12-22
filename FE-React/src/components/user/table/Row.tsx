@@ -3,6 +3,7 @@ import TD from "@common/table/td";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import BtnAction from "@common/button/btnAction";
 import StatusBadge from "@common/card/statusBadge";
+import BtnToggle from "@common/button/btnToggle";
 
 const Row = () => {
 	return (
@@ -11,24 +12,19 @@ const Row = () => {
 				<div className="size-10 rounded-xl bg-slate-100 flex items-center justify-center border border-slate-200">
 					<img src="#" alt="dịch vụ" />
 				</div>
-				<div>
-					<p className="font-semibold text-slate-700">Nguyễn Văn A</p>
-					<p className="text-[13px] text-slate-400 mt-1">ID: HUB-00001</p>
-				</div>
+				<p className="font-semibold text-slate-700">Nguyễn Văn A</p>
 			</TD>
 			<TD>
-				<p className="font-mono! text-slate-700">123 456 7890</p>
+				<p className="font-mono! text-lg text-slate-700">123 456 7890</p>
 				<p className="text-[13px] text-slate-400">vana.nguyen@email.com</p>
 			</TD>
-			<TD className="font-bold!">
-				<p className="rouned bg-slate-200">P101</p>
-			</TD>
-			<TD className="text-sm underline decoration-sky-500 decoration-2 underline-offset-2 text-slate-500">01/01/2026</TD>
-			<TD>
-				<StatusBadge className="bg-green-50 text-green-500 border-green-200" classCircle=" bg-green-500! ">
-					Đang thuê
+			<TD className="font-semibold">
+				<StatusBadge className="bg-[#137fec]/7 text-[#137fec] border-[#137fec]/70" classCircle=" hidden ">
+					Khách thuê
 				</StatusBadge>
 			</TD>
+			<TD className="text-sm underline decoration-sky-500 decoration-2 underline-offset-2 text-slate-500">Phòng: P101</TD>
+			<TD><BtnToggle/></TD>
 			<TD className="space-x-2">
 				<BtnAction dataTooltip="Chi tiết" className="bg-yellow-500">
 					<FaEye className="text-lg" />

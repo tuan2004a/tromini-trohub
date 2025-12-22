@@ -41,7 +41,7 @@ const Row = memo(() => {
 			</TD>
 			<TD className=" font-bold!">2.500.000đ</TD>
 			<TD>
-				<select value={value} onChange={handleChange} className={`${STATUS_ROOMS[value as StatusKeyRoom].className} w-30 outline-none rounded-full px-3 py-1.5 text-xs font-semibold border transition-colors `}>
+				<select value={value} onChange={handleChange} className={`${STATUS_ROOMS[value as StatusKeyRoom].className} selectStatus w-30 outline-none rounded-full px-3 py-1.5 text-xs font-semibold border transition-colors `}>
 					{statusOption}
 				</select>
 			</TD>

@@ -7,7 +7,7 @@ const customerService = () => {
 	return (
 		<MasterLayOut>
 			<div className="size-full p-8">
-				<section className="flex justify-between bg-white p-5 rounded-xl">
+				<section className="flex justify-between p-5 rounded-xl bg-white border border-slate-200">
 					<div>
 						<Search className="w-90!" placeholder="tìm theo tên dịch vụ..." />
 					</div>

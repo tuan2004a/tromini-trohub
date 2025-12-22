@@ -36,6 +36,11 @@ const getDynamicText = (pathname: string): DynamicText => {
 				title: "Danh sách người thuê",
 				subtitle: "Danh sách tất cả khách thuê hiện tại",
 			};
+		case "/quan-ly-hoa-don":
+			return {
+				title: "Quản lý hóa đơn",
+				subtitle: "Theo dõi, quản lý công nợ và thu tiền hàng tháng.",
+			};
 		default:
 			return {
 				title: "Trang không xác định",

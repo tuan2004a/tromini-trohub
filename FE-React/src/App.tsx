@@ -6,6 +6,7 @@ import Rooms from "@page/Room";
 import NotFoundPage from "@page/NotFoundPage";
 import Service from "@/pages/CustomerService";
 import User from "@page/User";
+import Bill from "@page/Bill";
 
 function App() {
 	return (
@@ -16,6 +17,7 @@ function App() {
 				<Route path="/quan-ly-phong" element={<Rooms />} />
 				<Route path="/quan-ly-dich-vu" element={<Service />} />
 				<Route path="/quan-ly-nguoi-dung" element={<User />} />
+				<Route path="/quan-ly-hoa-don" element={<Bill />} />
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
 		</Router>
