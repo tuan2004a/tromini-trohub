@@ -2,7 +2,7 @@ import TH from "@common/table/th"
 
 const TheadRow = () => {
     return (
-		<tr className="bg-slate-100 border-b border-slate-200">
+		<tr className="bg-slate-100 border-b border-slate-200 *:px-6! *:whitespace-nowrap">
 			<TH className="rounded-tl-xl">Mã HĐ</TH>
 			<TH>Phòng - Khách</TH>
 			<TH>Kỳ HĐ</TH>

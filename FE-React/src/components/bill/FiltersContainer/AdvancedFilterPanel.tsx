@@ -19,16 +19,16 @@ const AdvancedFilterPanel = () => {
 			</Select>
 			<Select className="selectFilter font-normal! rounded-lg py-2! px-3! text-sm! border-slate-300">
 				<OptionFilter value="" className="p-2 ">
-					Trạng thái: Tất cả
+					Tầng/Lầu: Tất cả
 				</OptionFilter>
 				<OptionFilter value="" className="p-2">
-					Đã thanh toán
+					Tầng 1
 				</OptionFilter>
 				<OptionFilter value="" className="p-2">
-					Chưa thanh toán
+					Tầng 2
 				</OptionFilter>
 				<OptionFilter value="" className="p-2">
-					Trễ thanh toán
+					Tầng 3
 				</OptionFilter>
 			</Select>
 

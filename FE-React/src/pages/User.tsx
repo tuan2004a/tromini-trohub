@@ -5,6 +5,9 @@ import UserTable from "@/components/user/UserTable";
 import MasterLayOut from "@layout/MasterLayOut"
 
 const User = () => {
+	// throw new Error("Test crash Room page");
+
+
     return (
 		<MasterLayOut>
 			<div className="size-full p-8">
@@ -30,3 +33,8 @@ const User = () => {
 }
 
 export default User
+
+// const Rooms = () => {
+// 	throw new Error("Test crash Room page");
+// };
+// export default Rooms;
