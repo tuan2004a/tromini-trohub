@@ -5,7 +5,7 @@ import PaymentStatusDonut from "@components/dashboards/PaymentStatusDonut";
 import ImportantNotice from "@components/dashboards/ImportantNotice";
 import RecentTransactions from "@components/dashboards/RecentTransactions";
 
-const dashboards = () => {
+const Dashboards = () => {
 	return (
 		<MasterLayOut>
 			<div className="size-full p-8">
@@ -33,4 +33,4 @@ const dashboards = () => {
 	);
 };
 
-export default dashboards;
+export default Dashboards;

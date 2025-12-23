@@ -4,6 +4,7 @@ import { Button } from "@radix-ui/themes";
 import { FaArrowRightFromBracket, FaBellConcierge } from "react-icons/fa6";
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { IoReceiptOutline } from "react-icons/io5";
 
 const Sidebar = React.memo(() => {
 	const location = useLocation();
@@ -54,7 +55,7 @@ const Sidebar = React.memo(() => {
 					</li>
 					<li>
 						<NavLink to="/quan-ly-hoa-don" className={getNavClassName}>
-							<FaUsers className="text-2xl" />
+							<IoReceiptOutline className="text-2xl" />
 							Hóa đơn
 						</NavLink>
 					</li>

@@ -2,8 +2,6 @@ import "./index.css";
 import "@radix-ui/themes/styles.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
-// import Dashboards from "@page/Dashboard";
-// Lazy load tất cả các trang
 const Dashboards = lazy(() => import("@page/Dashboard"));
 const Rooms = lazy(() => import("@page/Room"));
 const Service = lazy(() => import("@page/CustomerService"));
@@ -14,7 +12,6 @@ import Loading from "@/components/common/card/Loading";
 import ErrorBoundary from "./error/ErrorBoundary";
 
 function App() {
-	// const fallback = <h2>Loading...</h2>;
 	const fallback = <Loading />;
 
 	return (
