@@ -2,15 +2,20 @@ import React, { Component } from "react";
 import type { ErrorInfo, ReactNode } from "react";
 
 // Fallback UI nội bộ
-const ErrorFallback: React.FC<{ message?: string; onRetry?: () => void }> = ({ message = "Lỗi tải dữ liệu!", onRetry }) => {
+const ErrorFallback: React.FC<{ message?: string; onRetry?: () => void }> = ({ message = "Lỗi tải trang WEB!", onRetry }) => {
 	return (
-		<div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh", backgroundColor: "#f8d7da", color: "#721c24" }}>
-			<h2>{message}</h2>
-			{onRetry && (
-				<button onClick={onRetry} style={{ marginTop: "10px", padding: "10px", backgroundColor: "#dc3545", color: "white", border: "none", cursor: "pointer" }}>
-					Thử lại
-				</button>
-			)}
+		<div className="min-h-screen bg-linear-to-br from-rose-200 via-rose-100 to-rose-50 flex items-center justify-center px-6 font-sans">
+			<div className="w-full max-w-md bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 text-center text-rose-900">
+				<div className="text-5xl mb-2">⚠️</div>
+				<h2 className="text-2xl font-bold">{message}</h2>
+				<p className="mt-3 text-sm text-rose-700">Trục trặc nhỏ thôi. Bạn có thể thử tải lại trang hoặc kiểm tra kết nối mạng.</p>
+
+				{onRetry && (
+					<button onClick={onRetry} className="cursor-pointer mt-6 inline-flex items-center justify-center rounded-full bg-rose-600 text-white font-semibold px-6 py-3 shadow-lg shadow-rose-600/30 transition-transform duration-150 hover:-translate-y-0.5 focus:outline-none focus-visible:ring-4 focus-visible:ring-rose-500/40">
+						Thử lại
+					</button>
+				)} 
+			</div>
 		</div>
 	);
 };

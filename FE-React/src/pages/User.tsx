@@ -7,7 +7,6 @@ import MasterLayOut from "@layout/MasterLayOut"
 const User = () => {
 	// throw new Error("Test crash Room page");
 
-
     return (
 		<MasterLayOut>
 			<div className="size-full p-8">
