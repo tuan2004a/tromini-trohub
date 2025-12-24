@@ -1,24 +1,23 @@
 import TH from "@common/table/th";
 import PaginationTable from "@common/table/paginationTable";
-import { memo } from "react";
-import Row from "./table/Row";
+import TbodyRow from "./TbodyRow";
 
-const RoomTable = memo(() => {
+const UserTable = () => {
 	return (
 		<div>
 			<table className="w-full ">
 				<thead>
 					<tr className="bg-slate-100 border-b border-slate-200">
-						<TH className="rounded-tl-xl">Phòng</TH>
-						<TH>Tag</TH>
-						<TH className="">Giá thuê</TH>
-						<TH className="">Trạng thái</TH>
-						<TH className="">Dịch vụ</TH>
+						<TH className="rounded-tl-xl">Tên</TH>
+						<TH>Liên hệ</TH>
+						<TH>Loại</TH>
+						<TH>Chi tiết / Quyền</TH>
+						<TH>Trạng thái</TH>
 						<TH className="rounded-tr-xl">Thao tác</TH>
 					</tr>
 				</thead>
 				<tbody className="*:even:bg-slate-50">
-					<Row />
+					<TbodyRow />
 				</tbody>
 			</table>
 			<div className="w-full p-4 border-t border-slate-200">
@@ -26,6 +25,6 @@ const RoomTable = memo(() => {
 			</div>
 		</div>
 	);
-});
+};
 
-export default RoomTable;
+export default UserTable;

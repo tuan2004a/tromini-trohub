@@ -24,7 +24,9 @@ const Row = () => {
 				</StatusBadge>
 			</TD>
 			<TD className="text-sm underline decoration-sky-500 decoration-2 underline-offset-2 text-slate-500">Phòng: P101</TD>
-			<TD><BtnToggle/></TD>
+			<TD>
+				<BtnToggle />
+			</TD>
 			<TD className="space-x-2">
 				<BtnAction dataTooltip="Chi tiết" className="bg-yellow-500">
 					<FaEye className="text-lg" />

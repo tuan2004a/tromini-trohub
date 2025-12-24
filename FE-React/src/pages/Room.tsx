@@ -2,7 +2,7 @@ import Search from "@common/input/search";
 import MasterLayOut from "@layout/MasterLayOut";
 import BtnAddNew from "@common/button/btnAddNew";
 import BtnPrime from "@common/button/btnPrime";
-import RoomTable from "@components/rooms/RoomTable";
+import RoomTable from "@components/rooms/table/Index";
 
 const Rooms = () => {
 	return (

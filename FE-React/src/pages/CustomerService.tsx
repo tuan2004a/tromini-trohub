@@ -1,5 +1,5 @@
 import MasterLayOut from "@layout/MasterLayOut";
-import ServiceTable from "@/components/customerService/ServiceTable";
+import CustomerServiceTable from "@/components/customerService/table/Index";
 import BtnAddNew from "@common/button/btnAddNew";
 import Search from "@common/input/search";
 
@@ -17,7 +17,7 @@ const customerService = () => {
 				</section>
 
 				<section className="bg-white mt-5 rounded-xl border border-slate-200">
-					<ServiceTable />
+					<CustomerServiceTable />
 				</section>
 			</div>
 		</MasterLayOut>

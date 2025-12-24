@@ -6,7 +6,7 @@ import StatusOptions from "@common/input/statusOptions";
 import { memo, useCallback, useMemo, useState } from "react";
 import { STATUS_CUSTOMER_SERVICE, type StatusKeyService } from "@/types/status.config";
 
-const Row = memo(() => {
+const TbodyRow = memo(() => {
 	const [value, setValue] = useState<StatusKeyService>("active");
 
 	const statusOption = useMemo(
@@ -60,4 +60,4 @@ const Row = memo(() => {
 	);
 });
 
-export default Row;
+export default TbodyRow;
