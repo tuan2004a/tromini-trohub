@@ -7,11 +7,11 @@
 }
 
 .uk-active{
-    @apply bg-[#137fec]/15 text-[#137fec]! shadow-sm shadow-blue-100 ring-1 ring-[#137fec]/10 rounded-xl font-semibold border-l-5 
+    @apply bg-[#137fec]/15 text-[#137fec]! shadow-sm shadow-blue-100 ring-1 ring-[#137fec]/10 rounded-xl font-semibold border-l-5 hover:bg-[#137fec]/15!
 }
 
 .menu-sidebar{
-    @apply flex items-center gap-2 px-4 py-3 rounded-xl text-slate-700 hover:bg-[#137fec]/5 hover:text-[#137fec] transition-all duration-200
+    @apply flex items-center gap-2 px-4 py-3 rounded-xl text-slate-700 hover:bg-[#137fec]/7 hover:text-[#137fec] transition-all duration-200
 }
 
 .flex-center{
@@ -21,7 +21,7 @@
 select,::picker(select){
     appearance: base-select;
 }
-select::picker(select){
+::picker(select){
     border: none;
     border-radius: 6px;
     background-color: #f1f5f9 !important;
