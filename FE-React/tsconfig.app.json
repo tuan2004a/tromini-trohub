@@ -28,7 +28,8 @@
 			"@common/*": ["./src/components/common/*"],
 			"@layout/*": ["./src/components/layout/*"],
 			"@components/*": ["./src/components/*"],
-			"@page/*": ["./src/pages/*"]
+			"@page/*": ["./src/pages/*"],
+			"@MasterLayout": ["./src/components/layout/MasterLayOut"]
 		}
 	},
 	"include": ["src"]

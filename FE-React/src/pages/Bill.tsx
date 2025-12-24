@@ -1,6 +1,6 @@
 import FiltersContainer from "@/components/bill/FiltersContainer/Index";
 import BillTable from "@/components/bill/table/Index";
-import MasterLayOut from "@layout/MasterLayOut";
+import MasterLayOut from "@MasterLayout";
 
 const Bill = () => {
 	return (

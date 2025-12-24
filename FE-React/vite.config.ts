@@ -13,6 +13,7 @@ export default defineConfig({
 			"@page": path.resolve(__dirname, "./src/pages"),
 			"@layout": path.resolve(__dirname, "./src/components/layout"),
 			"@common": path.resolve(__dirname, "./src/components/common"),
+			"@MasterLayout": path.resolve(__dirname, "./src/components/layout/MasterLayOut"),
 		},
 	},
 });

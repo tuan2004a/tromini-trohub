@@ -1,4 +1,4 @@
-import MasterLayOut from "@layout/MasterLayOut";
+import MasterLayOut from "@MasterLayout";
 import DashboardOverview from "@components/dashboards/DashboardOverview";
 import RevenueOverviewChart from "@components/dashboards/RevenueOverviewChart";
 import PaymentStatusDonut from "@components/dashboards/PaymentStatusDonut";

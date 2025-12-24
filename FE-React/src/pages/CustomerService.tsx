@@ -1,4 +1,4 @@
-import MasterLayOut from "@layout/MasterLayOut";
+import MasterLayOut from "@MasterLayout";
 import CustomerServiceTable from "@/components/customerService/table/Index";
 import BtnAddNew from "@common/button/btnAddNew";
 import Search from "@common/input/search";
