@@ -64,8 +64,8 @@ const Navbar = React.memo(() => {
 				</Text>
 			</div>
 			<div className="flex">
-				<div className="mr-50">
-					<Search />
+				<div className="">
+					<Search className="w-75!"/>
 				</div>
 				<div className="flex gap-x-4">
 					<BtnNotif />

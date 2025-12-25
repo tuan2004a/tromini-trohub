@@ -7,6 +7,7 @@ const Rooms = lazy(() => import("@page/Room"));
 const Service = lazy(() => import("@page/CustomerService"));
 const User = lazy(() => import("@page/User"));
 const Bill = lazy(() => import("@page/Bill"));
+const CreateBill = lazy(() => import("@components/bill/createBill/Index"));
 const NotFoundPage = lazy(() => import("@page/NotFoundPage"));
 import Loading from "@/components/common/card/Loading";
 import ErrorBoundary from "./error/ErrorBoundary";
@@ -73,6 +74,16 @@ function App() {
 						<ErrorBoundary>
 							<Suspense fallback={fallback}>
 								<Bill />
+							</Suspense>
+						</ErrorBoundary>
+					}
+				/>
+				<Route
+					path="/quan-ly-hoa-don/tao-hoa-don"
+					element={
+						<ErrorBoundary>
+							<Suspense fallback={fallback}>
+								<CreateBill />
 							</Suspense>
 						</ErrorBoundary>
 					}
