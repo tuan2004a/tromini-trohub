@@ -9,7 +9,7 @@ interface optionFilterProps {
 
 const OptionFilter = ({ children, selected, value, className }: optionFilterProps) => {
 	return (
-		<option selected={selected} value={value} className={`${className} text-black font-medium hover:bg-[#137fec] hover:text-white! checked:bg-slate-300 checked:font-semibold!`}>
+		<option selected={selected} value={value} className={`${className} text-black hover:bg-[#137fec] hover:text-white! checked:bg-slate-200 checked:font-semibold!`}>
 			{children}
 		</option>
 	);

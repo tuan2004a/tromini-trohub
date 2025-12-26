@@ -4,7 +4,7 @@ import { FaRegPenToSquare } from "react-icons/fa6";
 import BtnAction from "@common/button/btnAction";
 import { LuAirVent } from "react-icons/lu";
 import { memo, useCallback, useMemo, useState } from "react";
-import { STATUS_ROOMS, type StatusKeyRoom } from "@/types/status.config";
+import { STATUS_ROOMS, type StatusKeyRoom } from "@/shared/types/status.config";
 import StatusOptions from "@common/input/statusOptions";
 
 const Row = memo(() => {

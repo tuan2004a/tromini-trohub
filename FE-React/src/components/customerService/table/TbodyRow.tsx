@@ -4,7 +4,7 @@ import { FaRegPenToSquare } from "react-icons/fa6";
 import BtnAction from "@common/button/btnAction";
 import StatusOptions from "@common/input/statusOptions";
 import { memo, useCallback, useMemo, useState } from "react";
-import { STATUS_CUSTOMER_SERVICE, type StatusKeyService } from "@/types/status.config";
+import { STATUS_CUSTOMER_SERVICE, type StatusKeyService } from "@/shared/types/status.config";
 
 const TbodyRow = memo(() => {
 	const [value, setValue] = useState<StatusKeyService>("active");
