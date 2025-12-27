@@ -1,4 +1,5 @@
 import BillBasicInfo from "@/components/bill/createBill/BillBasicInfo";
+import ElectricWaterUtilities from "@/components/bill/createBill/ElectricWaterUtilities";
 import MasterLayOut from "@MasterLayout"
 
 const CreateBill = () => {
@@ -10,7 +11,7 @@ const CreateBill = () => {
 				</section>
 
 				<section className="p-5 rounded-xl bg-white border border-slate-200 shadow-lg mt-5">
-					{/* < /> */}
+					<ElectricWaterUtilities />
 				</section>
 			</div>
 		</MasterLayOut>
