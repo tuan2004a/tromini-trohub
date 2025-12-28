@@ -13,6 +13,7 @@ const Bill = () => {
 				<section className=" bg-white mt-5 rounded-xl border border-slate-200">
 					<BillTable />
 				</section>
+				
 			</div>
 		</MasterLayOut>
 	);

@@ -1,6 +1,9 @@
 import BillBasicInfo from "@/components/bill/createBill/BillBasicInfo";
 import ElectricWaterUtilities from "@/components/bill/createBill/ElectricWaterUtilities/ElectricWaterUtilities";
 import MasterLayOut from "@MasterLayout";
+import PeriodicServiceList from "@/components/bill/createBill/PeriodicServiceList";
+import BillSummary from "@/components/bill/createBill/BillSummary/Index";
+
 
 const CreateBill = () => {
 	return (
@@ -12,6 +15,14 @@ const CreateBill = () => {
 
 				<section className="p-5 rounded-xl bg-white border border-slate-200 shadow-lg mt-5">
 					<ElectricWaterUtilities />
+				</section>
+
+				<section className="p-5 rounded-xl bg-white border border-slate-200 shadow-lg mt-5">
+					<PeriodicServiceList />
+				</section>
+
+				<section className="p-5 rounded-xl bg-white border border-slate-200 shadow-lg mt-5">
+					<BillSummary />
 				</section>
 			</div>
 		</MasterLayOut>
