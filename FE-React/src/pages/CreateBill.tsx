@@ -8,7 +8,7 @@ import BillSummary from "@/components/bill/createBill/BillSummary/Index";
 const CreateBill = () => {
 	return (
 		<MasterLayOut>
-			<div className="size-full p-8">
+			<div className="size-full p-8"> 5906
 				<section className="p-5 rounded-xl bg-white border border-slate-200 shadow-lg">
 					<BillBasicInfo />
 				</section>

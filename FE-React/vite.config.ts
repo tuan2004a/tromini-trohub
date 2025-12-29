@@ -11,9 +11,9 @@ export default defineConfig({
 			"@": path.resolve(__dirname, "./src"),
 			"@components": path.resolve(__dirname, "./src/components"),
 			"@page": path.resolve(__dirname, "./src/pages"),
-			"@layout": path.resolve(__dirname, "./src/components/layout"),
-			"@common": path.resolve(__dirname, "./src/components/common"),
-			"@MasterLayout": path.resolve(__dirname, "./src/components/layout/MasterLayOut"),
+			"@layout": path.resolve(__dirname, "./src/shared/layout"),
+			"@common": path.resolve(__dirname, "./src/shared/common"),
+			"@MasterLayout": path.resolve(__dirname, "./src/shared/layout/MasterLayOut"),
 		},
 	},
 });

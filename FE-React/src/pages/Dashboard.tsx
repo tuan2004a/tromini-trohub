@@ -4,8 +4,9 @@ import RevenueOverviewChart from "@components/dashboards/RevenueOverviewChart";
 import PaymentStatusDonut from "@components/dashboards/PaymentStatusDonut";
 import ImportantNotice from "@components/dashboards/ImportantNotice";
 import RecentTransactions from "@components/dashboards/RecentTransactions";
+import { memo } from "react";
 
-const Dashboards = () => {
+const Dashboards = memo(() => {
 	return (
 		<MasterLayOut>
 			<div className="size-full p-8">
@@ -31,6 +32,6 @@ const Dashboards = () => {
 			</div>
 		</MasterLayOut>
 	);
-};
+});
 
 export default Dashboards;
