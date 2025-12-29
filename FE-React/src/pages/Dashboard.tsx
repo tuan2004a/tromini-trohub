@@ -1,10 +1,6 @@
 import MasterLayOut from "@MasterLayout";
-import DashboardOverview from "@components/dashboards/DashboardOverview";
-import RevenueOverviewChart from "@components/dashboards/RevenueOverviewChart";
-import PaymentStatusDonut from "@components/dashboards/PaymentStatusDonut";
-import ImportantNotice from "@components/dashboards/ImportantNotice";
-import RecentTransactions from "@components/dashboards/RecentTransactions";
 import { memo } from "react";
+import { DashboardOverview, RevenueOverviewChart, PaymentStatusDonut, ImportantNotice, RecentTransactions } from "@components/dashboards/Index";
 
 const Dashboards = memo(() => {
 	return (

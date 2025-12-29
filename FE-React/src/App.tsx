@@ -9,7 +9,7 @@ const User = lazy(() => import("@page/User"));
 const Bill = lazy(() => import("@page/Bill"));
 const CreateBill = lazy(() => import("@page/CreateBill"));
 const NotFoundPage = lazy(() => import("@page/NotFoundPage"));
-import Loading from "@/components/common/card/Loading";
+import {Loading} from "@common/card/Index";
 import ErrorBoundary from "./error/ErrorBoundary";
 
 function App() {
