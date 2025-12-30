@@ -1,6 +1,6 @@
 import Search from "@common/input/search";
 import MasterLayOut from "@MasterLayout";
-import { RoomTable } from "@components/room/rooms/index";
+import { RoomTable } from "@components/room/components/rooms/index";
 import { BtnAddNew, BtnPrime } from "@common/button/Index";
 
 const Rooms = () => {
