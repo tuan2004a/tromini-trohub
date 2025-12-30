@@ -1,6 +1,6 @@
 import MasterLayOut from "@MasterLayout";
 import { memo } from "react";
-import { DashboardOverview, RevenueOverviewChart, PaymentStatusDonut, ImportantNotice, RecentTransactions } from "@components/dashboards/Index";
+import { DashboardOverview, RevenueOverviewChart, PaymentStatusDonut, ImportantNotice, RecentTransactions } from "@components/dashboards/components/Index";
 
 const Dashboards = memo(() => {
 	return (
