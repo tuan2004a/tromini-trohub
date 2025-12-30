@@ -1,6 +1,5 @@
-import FiltersContainer from "@/components/bill/bill/FiltersContainer/Index";
-import BillTable from "@/components/bill/bill/table/Index";
 import MasterLayOut from "@MasterLayout";
+import { FiltersContainer, BillTable } from "@components/bill/components/bills/index";
 
 const Bill = () => {
 	return (
@@ -13,7 +12,6 @@ const Bill = () => {
 				<section className=" bg-white mt-5 rounded-xl border border-slate-200">
 					<BillTable />
 				</section>
-				
 			</div>
 		</MasterLayOut>
 	);

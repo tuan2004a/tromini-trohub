@@ -1,8 +1,8 @@
 import BtnAddNew from "@common/button/btnAddNew";
 import BtnPrime from "@common/button/btnPrime";
 import Search from "@common/input/search";
-import UserTable from "@/components/user/table/Index";
 import MasterLayOut from "@MasterLayout"
+import { UserTable } from "@components/user/components/users/index";
 
 const User = () => {
 	// throw new Error("Test crash Room page");
