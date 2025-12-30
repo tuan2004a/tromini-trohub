@@ -1,4 +1,4 @@
-import TH from "@/components/common/table/th";
+import TH from "@common/table/th";
 
 const TheadRow = () => {
 	return (

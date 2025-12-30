@@ -1,10 +1,10 @@
-import ElectricWaterTable from "./ElectricWaterTable/Index";
+import ElectricWaterTable from "./Table/Index";
 
 const ElectricWaterUtilities = () => {
 	return (
 		<div>
 			<span className="font-semibold text-lg mb-3 block">Thông tin điện & nước </span>
-			<div className="w-full overflow-x-auto">
+			<div className="w-full border border-slate-200 rounded-xl overflow-x-auto">
 				<ElectricWaterTable />
 			</div>
 		</div>
