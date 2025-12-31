@@ -8,8 +8,9 @@ const Service = lazy(() => import("@page/CustomerService"));
 const User = lazy(() => import("@page/User"));
 const Bill = lazy(() => import("@page/Bill"));
 const CreateBill = lazy(() => import("@page/CreateBill"));
+const DetailBill = lazy(() => import("@page/DetailBill"));
 const NotFoundPage = lazy(() => import("@page/NotFoundPage"));
-import {Loading} from "@common/card/Index";
+import { Loading } from "@common/card/Index";
 import ErrorBoundary from "./error/ErrorBoundary";
 
 function App() {
@@ -28,6 +29,8 @@ function App() {
 						</ErrorBoundary>
 					}
 				/>
+
+				{/* Dashboard - trang tổng quan */}
 				<Route
 					path="/thong-ke"
 					element={
@@ -38,6 +41,8 @@ function App() {
 						</ErrorBoundary>
 					}
 				/>
+
+				{/* Room - quản lý phòng */}
 				<Route
 					path="/quan-ly-phong"
 					element={
@@ -48,6 +53,8 @@ function App() {
 						</ErrorBoundary>
 					}
 				/>
+
+				{/* Customer Service - quản lý dịch vụ */}
 				<Route
 					path="/quan-ly-dich-vu"
 					element={
@@ -58,6 +65,8 @@ function App() {
 						</ErrorBoundary>
 					}
 				/>
+
+				{/* User - quản lý người dùng */}
 				<Route
 					path="/quan-ly-nguoi-dung"
 					element={
@@ -68,6 +77,8 @@ function App() {
 						</ErrorBoundary>
 					}
 				/>
+
+				{/* Bill - quản lý hóa đơn */}
 				<Route
 					path="/quan-ly-hoa-don"
 					element={
@@ -88,6 +99,18 @@ function App() {
 						</ErrorBoundary>
 					}
 				/>
+				<Route
+					path="/quan-ly-hoa-don/chi-tiet-hoa-don"
+					element={
+						<ErrorBoundary>
+							<Suspense fallback={fallback}>
+								<DetailBill />
+							</Suspense>
+						</ErrorBoundary>
+					}
+				/>
+
+				{/* 404 Not Found */}
 				<Route
 					path="*"
 					element={

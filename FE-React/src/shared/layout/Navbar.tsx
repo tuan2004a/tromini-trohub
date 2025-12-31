@@ -65,12 +65,12 @@ const Navbar = React.memo(() => {
 			</div>
 			<div className="flex">
 				<div className="">
-					<Search className="w-75!"/>
+					<Search className="w-75!" />
 				</div>
 				<div className="flex gap-x-4">
 					<BtnNotif />
 					<div className="flex flex-row-reverse gap-x-3 border-l border-slate-200 pl-4">
-						<Avatar src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop" fallback="A" />
+						<Avatar src="https://i.pravatar.cc/" fallback="A" />
 						<div>
 							<span className="text-sm font-semibold text-slate-800">Admin User</span>
 							<p className="text-xs text-slate-500">Quản trị viên</p>
