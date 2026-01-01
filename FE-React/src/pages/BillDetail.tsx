@@ -1,4 +1,4 @@
-import { GeneralInfoCard, ActivityLog } from "@components/bill/components/detailBill/index";
+import { GeneralInfoCard, ActivityLog, FeeDetailsTable } from "@components/bill/components/detailBill/index";
 import MasterLayOut from "@MasterLayout";
 
 const DetailBill = () => {
@@ -15,7 +15,16 @@ const DetailBill = () => {
 							<ActivityLog />
 						</section>
 					</div>
-					<div className="lg:col-span-2 space-y-6"></div>
+					<div className="lg:col-span-2 space-y-6">
+						<section className="rounded-xl bg-white border border-slate-200 shadow-lg">
+							<FeeDetailsTable />
+						</section>
+						<div>
+							<section className="rounded-xl bg-white border border-slate-200 shadow-lg">
+								
+							</section>
+						</div>
+					</div>
 				</div>
 			</div>
 		</MasterLayOut>
