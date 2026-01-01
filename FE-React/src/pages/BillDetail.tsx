@@ -1,4 +1,4 @@
-import { GeneralInfoCard, ActivityLog, FeeDetailsTable } from "@components/bill/components/detailBill/index";
+import { GeneralInfoCard, ActivityLog, FeeDetailsTable, BillSummaryStatus, TransactionHistory } from "@components/bill/components/detailBill/index";
 import MasterLayOut from "@MasterLayout";
 
 const DetailBill = () => {
@@ -19,9 +19,12 @@ const DetailBill = () => {
 						<section className="rounded-xl bg-white border border-slate-200 shadow-lg">
 							<FeeDetailsTable />
 						</section>
-						<div>
-							<section className="rounded-xl bg-white border border-slate-200 shadow-lg">
-								
+						<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+							<section className="p-5 rounded-xl bg-white border border-slate-200 shadow-lg">
+								<BillSummaryStatus />
+							</section>
+							<section className="p-5 rounded-xl bg-white border border-slate-200 shadow-lg">
+								<TransactionHistory />
 							</section>
 						</div>
 					</div>
