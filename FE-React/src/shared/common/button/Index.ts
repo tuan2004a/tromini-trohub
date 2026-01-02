@@ -3,3 +3,4 @@ export { default as BtnAddNew } from "./btnAddNew";
 export { default as BtnNotif } from "./btnNotif";
 export { default as BtnPrime } from "./btnPrime";
 export { default as BtnToggle } from "./btnToggle";
+export { default as BtnIconAction } from "./BtnIconAction";

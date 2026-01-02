@@ -4,8 +4,11 @@ import TD from "@common/table/td";
 import { FaEye, FaPrint, FaTrash } from "react-icons/fa";
 import { FaRegPenToSquare } from "react-icons/fa6";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { useNavigate } from "react-router";
 
 const TbodyRow = () => {
+	const navigate = useNavigate();
+
 	return (
 		<tr className="*:px-6! *:whitespace-nowrap">
 			<TD className="font-medium! text-sm">#HĐ-NF5432GF</TD>
@@ -25,7 +28,13 @@ const TbodyRow = () => {
 				</StatusBadge>
 			</TD>
 			<TD className="font-medium! text-sm text-slate-600 space-x-1.5">
-				<BtnAction dataTooltip="Chi tiết" className="bg-yellow-500">
+				<BtnAction
+					onClick={() => {
+						navigate("/quan-ly-hoa-don/chi-tiet-hoa-don");
+					}}
+					dataTooltip="Chi tiết"
+					className="bg-yellow-500"
+				>
 					<FaEye className="text-lg" />
 				</BtnAction>
 				<BtnAction dataTooltip="In/PDF" className="bg-slate-500">
