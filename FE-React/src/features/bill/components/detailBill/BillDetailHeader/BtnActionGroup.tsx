@@ -19,7 +19,7 @@ const BtnActionGroup = () => {
 				<BiSend className="text-xl" />
 				Giửi TB
 			</BtnIconAction>
-			<BtnIconAction className="text-sm! border-slate-200 bg-[#137fec]/90 text-white focus:ring-0">
+			<BtnIconAction className="text-sm! border-slate-200 bg-[#137fec]/90 text-white focus:ring-0 border-none! ">
 				<BsCashCoin className="text-lg" />
 				Xác nhận TT
 			</BtnIconAction>
