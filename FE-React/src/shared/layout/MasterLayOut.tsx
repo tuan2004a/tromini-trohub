@@ -14,7 +14,7 @@ const MasterLayOut = ({ children }: MasterLayOut) => {
 				<Sidebar />
 			</div>
 			<div className="w-full">
-				<header className="border-b border-[#e2e8f0] bg-white fixed w-[calc(100%-256px)] top-0 right-0 z-50">
+				<header className="border-b border-[#e2e8f0] bg-white fixed w-[calc(100%-256px)] top-0 right-0 z-40">
 					<Navbar />
 				</header>
 				<div className="mt-18 pl-64 w-full bg-[#f5f5f5]">{children}</div>

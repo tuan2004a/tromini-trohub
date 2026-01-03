@@ -1,8 +1,8 @@
 import { GeneralInfoCard, ActivityLog, FeeDetailsTable, BillSummaryStatus, TransactionHistory, BillDetailHeader } from "@components/bill/components/detailBill/index";
 import MasterLayOut from "@MasterLayout";
+import { SendIBillNotice } from "@components/bill/components/modal/index";
 
 const DetailBill = () => {
-
 	return (
 		<MasterLayOut>
 			<div className="size-full p-8">
@@ -33,6 +33,10 @@ const DetailBill = () => {
 					</div>
 				</div>
 			</div>
+
+			<section className="hidden! fixed top-1/2 left-1/2 -translate-1/2 size-full flex-center bg-slate-700/80 backdrop-blur-xs z-50">
+				<SendIBillNotice />
+			</section>
 		</MasterLayOut>
 	);
 };
