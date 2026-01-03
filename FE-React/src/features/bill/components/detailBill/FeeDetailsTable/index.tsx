@@ -5,7 +5,7 @@ import TfootRow from "./TfootRow";
 
 const FeeDetailsTable = memo(() => {
 	return (
-		<div>
+		<div >
 			<table className="w-full">
 				<thead className="text-[13px] uppercase">
 					<TheadRow />

@@ -23,7 +23,7 @@ const DetailBill = () => {
 							<FeeDetailsTable />
 						</section>
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-							<section className="p-5 rounded-xl bg-white border border-slate-200 shadow-lg">
+							<section className="">
 								<BillSummaryStatus />
 							</section>
 							<section className="p-5 rounded-xl bg-white border border-slate-200 shadow-lg">
