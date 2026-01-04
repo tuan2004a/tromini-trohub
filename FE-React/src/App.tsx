@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 const Dashboards = lazy(() => import("@page/Dashboard"));
 const Rooms = lazy(() => import("@page/Room"));
+const RoomDetail = lazy(() => import("@page/RoomDetail"));
 const Service = lazy(() => import("@page/CustomerService"));
 const User = lazy(() => import("@page/User"));
 const Bill = lazy(() => import("@page/Bill"));
@@ -49,6 +50,16 @@ function App() {
 						<ErrorBoundary>
 							<Suspense fallback={fallback}>
 								<Rooms />
+							</Suspense>
+						</ErrorBoundary>
+					}
+				/>
+				<Route
+					path="/quan-ly-phong/chi-tiet-phong"
+					element={
+						<ErrorBoundary>
+							<Suspense fallback={fallback}>
+								<RoomDetail />
 							</Suspense>
 						</ErrorBoundary>
 					}
