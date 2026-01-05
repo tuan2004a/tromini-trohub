@@ -1,4 +1,4 @@
-import { RoomDetailHeader, RoomBasicInfo, AppliedServices, ChangeHistory, ProfileTentant } from "@components/room/components/detailRoom";
+import { RoomDetailHeader, RoomBasicInfo, AppliedServices, ChangeHistory, ProfileTentant, QuickActionsCard } from "@components/room/components/detailRoom";
 import MasterLayOut from "@MasterLayout";
 
 const RoomDetail = () => {
@@ -23,6 +23,9 @@ const RoomDetail = () => {
 					<div className="lg:col-span-1 flex flex-col gap-6">
 						<section className="p-5 rounded-xl bg-white border border-slate-200 shadow-lg">
 							<ProfileTentant />
+						</section>
+						<section className="p-5 rounded-xl bg-white border border-slate-200 shadow-lg">
+							<QuickActionsCard />
 						</section>
 					</div>
 				</div>
