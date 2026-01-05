@@ -1,4 +1,4 @@
-import { RoomDetailHeader, RoomBasicInfo } from "@components/room/components/detailRoom";
+import { RoomDetailHeader, RoomBasicInfo, AppliedServices, ChangeHistory, ProfileTentant } from "@components/room/components/detailRoom";
 import MasterLayOut from "@MasterLayout";
 
 const RoomDetail = () => {
@@ -13,8 +13,18 @@ const RoomDetail = () => {
 						<section className="p-5 rounded-xl bg-white border border-slate-200 shadow-lg">
 							<RoomBasicInfo />
 						</section>
+						<section className="rounded-xl bg-white border border-slate-200 shadow-lg">
+							<AppliedServices />
+						</section>
+						<section className="p-5 rounded-xl bg-white border border-slate-200 shadow-lg">
+							<ChangeHistory />
+						</section>
 					</div>
-					<div className="lg:col-span-1 flex flex-col gap-6"></div>
+					<div className="lg:col-span-1 flex flex-col gap-6">
+						<section className="p-5 rounded-xl bg-white border border-slate-200 shadow-lg">
+							<ProfileTentant />
+						</section>
+					</div>
 				</div>
 			</div>
 		</MasterLayOut>

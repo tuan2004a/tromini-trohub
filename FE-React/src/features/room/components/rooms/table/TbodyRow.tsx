@@ -6,9 +6,12 @@ import { LuAirVent } from "react-icons/lu";
 import { memo, useCallback, useMemo, useState } from "react";
 import { STATUS_ROOMS, type StatusKeyRoom } from "@/shared/types/status.config";
 import StatusOptions from "@common/input/statusOptions";
+import { useNavigate } from "react-router";
 
 const Row = memo(() => {
 	const [value, setValue] = useState<StatusKeyRoom>("available");
+	const navigate = useNavigate();
+
 
 	const statusOption = useMemo(
 		() =>
@@ -54,7 +57,13 @@ const Row = memo(() => {
 				</div>
 			</TD>
 			<TD className="space-x-2">
-				<BtnAction dataTooltip="Chi tiết" className="bg-yellow-500">
+				<BtnAction
+					onClick={() => {
+						navigate("/quan-ly-phong/chi-tiet-phong");
+					}}
+					dataTooltip="Chi tiết"
+					className="bg-yellow-500"
+				>
 					<FaEye className="text-lg" />
 				</BtnAction>
 				<BtnAction dataTooltip="Chỉnh sửa" className="bg-[#36fe00]">
