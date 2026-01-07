@@ -10,7 +10,7 @@ interface selectProps {
 
 const Select = ({ children, className, name, id }: selectProps) => {
 	return (
-		<select id={id} name={name} className={`${className} outline-none px-3 py-1.5 text-sm rounded-lg font-semibold border transition-colors `}>
+		<select id={id} name={name} className={`${className} outline-none py-2 px-3 text-sm rounded-lg font-semibold border transition-colors `}>
 			{children}
 		</select>
 	);

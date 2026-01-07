@@ -5,6 +5,7 @@ import { Suspense, lazy } from "react";
 const Dashboards = lazy(() => import("@page/Dashboard"));
 const Rooms = lazy(() => import("@page/Room"));
 const RoomDetail = lazy(() => import("@page/RoomDetail"));
+const RoomCreate = lazy(() => import("@page/RoomCreate"));
 const Service = lazy(() => import("@page/CustomerService"));
 const User = lazy(() => import("@page/User"));
 const Bill = lazy(() => import("@page/Bill"));
@@ -50,6 +51,16 @@ function App() {
 						<ErrorBoundary>
 							<Suspense fallback={fallback}>
 								<Rooms />
+							</Suspense>
+						</ErrorBoundary>
+					}
+				/>
+				<Route
+					path="/quan-ly-phong/tao-phong-moi"
+					element={
+						<ErrorBoundary>
+							<Suspense fallback={fallback}>
+								<RoomCreate />
 							</Suspense>
 						</ErrorBoundary>
 					}

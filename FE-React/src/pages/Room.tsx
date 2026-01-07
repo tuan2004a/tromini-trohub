@@ -2,8 +2,12 @@ import Search from "@common/input/search";
 import MasterLayOut from "@MasterLayout";
 import { RoomTable } from "@components/room/components/rooms/index";
 import { BtnAddNew, BtnPrime } from "@common/button/Index";
+import { useNavigate } from "react-router";
 
 const Rooms = () => {
+
+	const navigate = useNavigate();
+
 	return (
 		<MasterLayOut>
 			<div className="size-full p-8">
@@ -17,7 +21,7 @@ const Rooms = () => {
 						</div>
 					</div>
 					<div>
-						<BtnAddNew>Thêm phòng mới</BtnAddNew>
+						<BtnAddNew onClick={() => navigate("/quan-ly-phong/tao-phong-moi")}>Thêm phòng mới</BtnAddNew>
 					</div>
 				</section>
 
