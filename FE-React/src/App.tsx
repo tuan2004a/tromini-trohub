@@ -1,21 +1,10 @@
 import "./index.css";
 import "@radix-ui/themes/styles.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Suspense, lazy } from "react";
-const Dashboards = lazy(() => import("@page/Dashboard"));
-const Rooms = lazy(() => import("@page/Room"));
-const RoomDetail = lazy(() => import("@page/RoomDetail"));
-const RoomCreate = lazy(() => import("@page/RoomCreate"));
-const Service = lazy(() => import("@page/CustomerService"));
-const User = lazy(() => import("@page/User"));
-const Bill = lazy(() => import("@page/Bill"));
-const CreateBill = lazy(() => import("@/pages/BillCreate"));
-const DetailBill = lazy(() => import("@/pages/BillDetail"));
-const NotFoundPage = lazy(() => import("@page/NotFoundPage"));
-const CustomerServiceCreate = lazy(() => import("@page/CustomerServiceCreate"));
+import { Suspense } from "react";
 import { Loading } from "@common/card/Index";
 import ErrorBoundary from "./error/ErrorBoundary";
-
+import { Dashboards, Rooms, RoomDetail, RoomCreate, Service, CustomerServiceCreate, User, Bill, CreateBill, DetailBill, NotFoundPage, CustomerServiceDetail } from "@page/index";
 
 function App() {
 	const fallback = <Loading />;
@@ -95,6 +84,16 @@ function App() {
 						<ErrorBoundary>
 							<Suspense fallback={fallback}>
 								<CustomerServiceCreate />
+							</Suspense>
+						</ErrorBoundary>
+					}
+				/>
+				<Route
+					path="/quan-ly-dich-vu/chi-tiet-dich-vu"
+					element={
+						<ErrorBoundary>
+							<Suspense fallback={fallback}>
+								<CustomerServiceDetail />
 							</Suspense>
 						</ErrorBoundary>
 					}

@@ -5,9 +5,11 @@ import BtnAction from "@common/button/btnAction";
 import StatusOptions from "@common/input/statusOptions";
 import { memo, useCallback, useMemo, useState } from "react";
 import { STATUS_CUSTOMER_SERVICE, type StatusKeyService } from "@/shared/types/status.config";
+import { useNavigate } from "react-router";
 
 const TbodyRow = memo(() => {
 	const [value, setValue] = useState<StatusKeyService>("active");
+	const navigate = useNavigate();
 
 	const statusOption = useMemo(
 		() =>
@@ -46,7 +48,13 @@ const TbodyRow = memo(() => {
 				</select>
 			</TD>
 			<TD className="space-x-2">
-				<BtnAction dataTooltip="Chi tiết" className="bg-yellow-500">
+				<BtnAction
+					onClick={() => {
+						navigate("/quan-ly-dich-vu/chi-tiet-dich-vu");
+					}}
+					dataTooltip="Chi tiết"
+					className="bg-yellow-500"
+				>
 					<FaEye className="text-lg" />
 				</BtnAction>
 				<BtnAction dataTooltip="Chỉnh sửa" className="bg-[#36fe00]">
