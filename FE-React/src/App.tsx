@@ -12,8 +12,10 @@ const Bill = lazy(() => import("@page/Bill"));
 const CreateBill = lazy(() => import("@/pages/BillCreate"));
 const DetailBill = lazy(() => import("@/pages/BillDetail"));
 const NotFoundPage = lazy(() => import("@page/NotFoundPage"));
+const CustomerServiceCreate = lazy(() => import("@page/CustomerServiceCreate"));
 import { Loading } from "@common/card/Index";
 import ErrorBoundary from "./error/ErrorBoundary";
+
 
 function App() {
 	const fallback = <Loading />;
@@ -83,6 +85,16 @@ function App() {
 						<ErrorBoundary>
 							<Suspense fallback={fallback}>
 								<Service />
+							</Suspense>
+						</ErrorBoundary>
+					}
+				/>
+				<Route
+					path="/quan-ly-dich-vu/tao-dich-vu-moi"
+					element={
+						<ErrorBoundary>
+							<Suspense fallback={fallback}>
+								<CustomerServiceCreate />
 							</Suspense>
 						</ErrorBoundary>
 					}

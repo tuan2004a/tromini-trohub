@@ -7,7 +7,7 @@ const TheadRow = () => {
 			<TH>Tag</TH>
 			<TH className="">Giá thuê</TH>
 			<TH className="">Trạng thái</TH>
-			<TH className="">Dịch vụ</TH>
+			<TH className="">Dịch vụ thuê</TH>
 			<TH className="rounded-tr-xl">Thao tác</TH>
 		</tr>
 	);

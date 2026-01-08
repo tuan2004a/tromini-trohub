@@ -2,8 +2,11 @@ import MasterLayOut from "@MasterLayout";
 import BtnAddNew from "@common/button/btnAddNew";
 import Search from "@common/input/search";
 import { CustomerServiceTable } from "@components/customerService/components/customerServices/index";
+import { useNavigate } from "react-router";
 
 const customerService = () => {
+	const navigate = useNavigate();
+
 	return (
 		<MasterLayOut>
 			<div className="size-full p-8">
@@ -12,7 +15,7 @@ const customerService = () => {
 						<Search className="w-90!" placeholder="tìm theo tên dịch vụ..." />
 					</div>
 					<div>
-						<BtnAddNew>Thêm phòng mới</BtnAddNew>
+						<BtnAddNew onClick={() => navigate("/quan-ly-dich-vu/tao-dich-vu-moi")}>Thêm phòng mới</BtnAddNew>
 					</div>
 				</section>
 
