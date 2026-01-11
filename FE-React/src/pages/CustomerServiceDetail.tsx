@@ -1,4 +1,4 @@
-import { BasicInfor, AppliedLocations } from "@components/customerService/components/detailCustomerService";
+import { BasicInfor, AppliedLocations, PriceHistory, ChangeHistory } from "@components/customerService/components/detailCustomerService";
 import MasterLayOut from "@MasterLayout";
 
 const CustomerServiceDetail = () => {
@@ -9,8 +9,16 @@ const CustomerServiceDetail = () => {
 					<section className="p-5 rounded-xl bg-white border border-slate-200 shadow-lg">
 						<BasicInfor />
 					</section>
-					<section className="p-5 rounded-xl bg-white border border-slate-200 shadow-lg">
+					<section className=" rounded-xl bg-white border border-slate-200 shadow-lg">
 						<AppliedLocations />
+					</section>
+				</div>
+				<div className="lg:col-span-1 flex flex-col gap-6">
+					<section className="p-5 rounded-xl bg-white border border-slate-200 shadow-lg">
+						<PriceHistory />
+					</section>
+					<section className="rounded-xl bg-white border border-slate-200 shadow-lg">
+						<ChangeHistory />
 					</section>
 				</div>
 			</div>

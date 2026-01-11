@@ -1,14 +1,15 @@
 import { CiBank } from "react-icons/ci";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import { IoReceiptOutline } from "react-icons/io5";
 
 const TransactionEmptyState = () => {
 	return (
 		<>
-			{/* <div className="size-full flex-center flex-col">
+			<div className="hidden! size-full flex-center flex-col">
 				<IoReceiptOutline className="text-3xl text-slate-400 flex items-center justify-center mb-3" />
 				<p className="text-sm font-medium text-slate-700">Chưa có giao dịch nào</p>
 				<p className="text-xs text-slate-400 mt-1 max-w-[250px] text-center">Các khoản thanh toán sẽ xuất hiện ở đây sau khi được ghi nhận.</p>
-			</div> */}
+			</div> 
 			<div className="size-full max-h-[210px] overflow-y-auto">
 				<ul className="*:not-last:border-b *:border-slate-200! space-y-3">
 					<li className="pb-3">
